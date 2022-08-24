@@ -1,0 +1,12 @@
+button {
+   padding: 0.5em 2.5em;
+   border-radius: 5em;
+   cursor: pointer;
+   border: none;
+   transition: all 0.3s ease;
+}
+
+button:hover {
+   filter: brightness(1.5);
+   transition: all 0.3s ease;
+}

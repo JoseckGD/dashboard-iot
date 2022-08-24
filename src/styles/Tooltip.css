@@ -1,0 +1,32 @@
+.tooltiptext {
+   visibility: hidden;
+}
+
+.close .btn .tooltiptext {
+   visibility: hidden;
+   width: 120px;
+   background-color: black;
+   color: #fff;
+   text-align: center;
+   border-radius: 6px;
+   padding: 5px 0;
+   position: absolute;
+   z-index: 1;
+   left: 110%;
+   box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.50);
+}
+
+.close .btn .tooltiptext::after {
+   content: "";
+   position: absolute;
+   top: 50%;
+   right: 100%;
+   margin-top: -5px;
+   border-width: 5px;
+   border-style: solid;
+   border-color: transparent black transparent transparent;
+}
+
+.close .btn:hover .tooltiptext {
+   visibility: visible;
+}

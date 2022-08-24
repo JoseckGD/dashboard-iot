@@ -1,0 +1,36 @@
+/*HEADER - STYLES*/
+header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   height: 4em;
+   width: 100% auto;
+   padding: 0 2em;
+}
+
+header a figure {
+   margin-left: 0;
+}
+
+figure {
+   display: inline-block;
+   height: 100%;
+   margin: 0;
+}
+
+figure img {
+   height: 3em;
+}
+
+.Light figure img {
+   filter: drop-shadow(0 0 20px #00000080);
+}
+
+.Dark figure img {
+   filter: drop-shadow(0 0 20px #ffffff80);
+}
+
+header button {
+   margin-right: 0.5em;
+}

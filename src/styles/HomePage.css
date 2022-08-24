@@ -1,0 +1,13 @@
+.homepage {
+   position: relative;
+   left: 16em;
+   width: calc(100% - 16em);
+   height: 100vh;
+   transition: all 0.5s ease-in-out;
+}
+
+.Sidebar.close~.homepage {
+   left: 5.875em;
+   width: calc(100% - 5.875em);
+   transition: all 0.5s ease-in-out;
+}
