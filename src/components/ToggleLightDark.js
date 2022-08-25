@@ -1,5 +1,5 @@
 import { useStateContext } from "../contexts/ContextProvider";
-import '../styles/ToggleLightDark.css';
+import '../styles/stylesComponents/ToggleLightDark.css';
 
 export const ToggleLightDark = () => {
 

@@ -1,4 +1,4 @@
-import '../styles/Button.css';
+import '../styles/stylesComponents/Button.css';
 
 export const Button = ({ text, icon, bgColor }) => {
    return (

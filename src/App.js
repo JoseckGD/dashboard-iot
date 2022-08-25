@@ -5,7 +5,6 @@ import { DispositivosPage } from "./pages/DispositivosPage";
 import { UsuariosPage } from "./pages/UsuariosPage";
 import { ReportesPage } from "./pages/ReportesPage";
 import './App.css';
-import './styles/Sidebar.css';
 import { Error404Page } from "./pages/Error404Page";
 import { LoginPage } from "./pages/LoginPage";
 import { TipoUsuarioPage } from "./pages/TipoUsuarioPage";

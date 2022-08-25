@@ -38,8 +38,6 @@ export const LoginPage = ({ rol }) => {
                      <button type="submit" className="btn-Submit">Entrar</button>
                   </form>
 
-                  <Navlink name='usuario' type='primary' index='1' />
-
                </div>
             </div>
          </div>

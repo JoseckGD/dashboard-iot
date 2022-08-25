@@ -1,4 +1,4 @@
-import '../styles/Tooltip.css';
+import '../styles/stylesComponents/Tooltip.css';
 
 export const Tooltip = ({ text }) => {
    return (

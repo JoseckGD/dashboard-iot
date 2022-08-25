@@ -1,7 +1,9 @@
 import React from 'react';
 import { useStateContext } from '../contexts/ContextProvider';
 import { buttonsData } from '../data/SidebarDataBtns';
-// import Logo from '../img/Logo.png';
+
+import '../styles/stylesComponents/Sidebar.css'
+
 import userA from '../img/userAvatar.png'
 import menu from '../img/menu.png'
 import close from '../img/close.png';
