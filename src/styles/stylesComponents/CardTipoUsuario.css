@@ -1,0 +1,53 @@
+.Dark .cardTipoUsuario {
+   color: ghostwhite;
+}
+
+.cardTipoUsuario {
+   width: 20em;
+   height: 20em;
+   background: var(--main-gradient);
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+   border-radius: 20px;
+   border: 2px solid rgba(255, 255, 255, 0.18);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   gap: 2em;
+   cursor: pointer;
+}
+
+.cardTipoUsuario:hover {
+   transform: translateY(-1em);
+   transition: all 0.5s ease-in-out;
+}
+
+.cardTipoUsuario .imgIcon {
+   width: 100%;
+   height: 100% auto;
+   border-radius: 100%;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+.imgIcon img {
+   width: 10em;
+   height: 10em;
+   border-radius: 100%;
+   border: 3px solid rgba(125, 155, 245, 0.7);
+}
+
+.cardTipoUsuario .txtTipo {
+   width: 100%;
+   height: 100% auto;
+}
+
+.cardTipoUsuario .txtTipo p {
+   text-align: center;
+   font-size: 2em;
+   font-weight: 600;
+}

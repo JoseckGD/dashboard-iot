@@ -1,5 +1,6 @@
 import homepage from '../img/homepage.png';
 import exit from '../img/exit.png';
+import userA from '../img/userAvatar.png'
 // import Logo from '../img/Logo.png';
 
 export const buttonsData = [
@@ -9,7 +10,7 @@ export const buttonsData = [
          {
             name: 'ROL',
             type: 'perfil',
-            icon: homepage,
+            icon: userA,
          },
       ],
    },

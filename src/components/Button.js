@@ -4,6 +4,7 @@ export const Button = ({ text, icon, bgColor }) => {
    return (
       <button
          type="button"
+         className='button'
          style={{
             backgroundColor: bgColor,
             boxShadow: `0px 5px 20px 1px ${bgColor}90`

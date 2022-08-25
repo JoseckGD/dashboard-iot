@@ -1,5 +1,6 @@
 .tooltiptext {
    visibility: hidden;
+   position: absolute;
 }
 
 .close .btn .tooltiptext {

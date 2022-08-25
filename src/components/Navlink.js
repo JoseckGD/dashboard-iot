@@ -1,6 +1,7 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { Tooltip } from './Tooltip'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Tooltip } from './Tooltip';
+import defaultIcon from '../img/homepage.png';
 
 export const Navlink = ({ name, type, icon, index }) => {
 
@@ -16,7 +17,7 @@ export const Navlink = ({ name, type, icon, index }) => {
          }>
          {index !== 0 &&
             <div className='icon'>
-               <img src={icon} alt={name} />
+               <img src={!icon ? defaultIcon : icon} alt={name} />
             </div>
          }
          <p>

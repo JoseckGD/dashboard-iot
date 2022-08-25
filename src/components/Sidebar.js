@@ -1,7 +1,8 @@
 import React from 'react';
 import { useStateContext } from '../contexts/ContextProvider';
 import { buttonsData } from '../data/SidebarDataBtns';
-import Logo from '../img/Logo.png';
+// import Logo from '../img/Logo.png';
+import userA from '../img/userAvatar.png'
 import menu from '../img/menu.png'
 import close from '../img/close.png';
 import { Navlink } from './Navlink';
@@ -29,7 +30,7 @@ export const Sidebar = () => {
                <div key={item.title} className={`category ${item.title} num${index}`}>
                   <p className='title'>
                      {index === 0 && (
-                        <img src={Logo} className='img-logo' alt='logo' />)
+                        <img src={userA} className='img-logo' alt='logo' />)
                      }
                      {index !== 0 &&
                         item.title}
