@@ -1,7 +1,3 @@
-:root {
-   --main-gradient: -webkit-radial-gradient(top left, rgba(125, 155, 245, .70), rgba(255, 255, 255, 0.216));
-}
-
 .Login {
    margin: 0;
    padding: 0;
@@ -46,7 +42,7 @@
    align-items: center;
    position: relative;
    width: 25em;
-   height: 34.375em;
+   height: 31.5em;
 }
 
 .Login .card .card-content {
@@ -111,7 +107,7 @@
    align-items: center;
    justify-content: center;
    flex-direction: column;
-   padding: 1em;
+   padding: 1em 1em 0 1em;
 }
 
 .Login .login-form .input-form {

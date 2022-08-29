@@ -6,8 +6,6 @@
 .close .btn .tooltiptext {
    visibility: hidden;
    width: 120px;
-   background-color: black;
-   color: #fff;
    text-align: center;
    border-radius: 6px;
    padding: 5px 0;
@@ -17,6 +15,17 @@
    box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.50);
 }
 
+.Light .tooltiptext {
+   background-color: rgb(0, 0, 0);
+   color: #fff;
+}
+
+.Dark .tooltiptext {
+   background-color: rgb(255, 255, 255);
+   color: rgb(0, 0, 0);
+}
+
+/* F L E C H A    Tooltiptext*/
 .close .btn .tooltiptext::after {
    content: "";
    position: absolute;
@@ -25,9 +34,22 @@
    margin-top: -5px;
    border-width: 5px;
    border-style: solid;
+}
+
+.Light .tooltiptext::after {
+
    border-color: transparent black transparent transparent;
+}
+
+.Dark .tooltiptext::after {
+   border-color: transparent white transparent transparent;
+
 }
 
 .close .btn:hover .tooltiptext {
    visibility: visible;
+}
+
+.btn-active .tooltiptext {
+   filter: invert(1);
 }

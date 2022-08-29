@@ -7,20 +7,21 @@ import { Header } from '../components/Header';
 export const TipoUsuarioPage = () => {
    return (
       <>
-         <Header />
+         <Header btn={true} />
          <section className="tipoUsuario">
             <nav className='opciones'>
                <NavLink to='/login_Gerente'>
                   <CardTipoUsuario tipo='Gerente' icono={icon} />
                </NavLink>
 
+               <NavLink to='/login_Operador'>
+                  <CardTipoUsuario tipo='Operador' icono={icon} />
+               </NavLink>
+
                <NavLink to='/login_Admin'>
                   <CardTipoUsuario tipo='Administrador' icono={icon} />
                </NavLink>
 
-               <NavLink to='/login_Ingeniero'>
-                  <CardTipoUsuario tipo='Ingeniero en Procesos' icono={icon} />
-               </NavLink>
             </nav>
          </section>
       </>

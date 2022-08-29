@@ -1,10 +1,21 @@
+:root {
+  --main-gradient: -webkit-radial-gradient(top left, rgba(125, 155, 245, .70), rgba(255, 255, 255, 0.216));
+  --main-gradient-r: -webkit-radial-gradient(top right, rgba(125, 155, 245, .70), rgba(255, 255, 255, 0.216));
+
+  --main-color: #282c34;
+  --main-color-50: #282c3460;
+  --main-bg: cornflowerblue;
+  --text: ghostwhite;
+  --text-dark: #282c34;
+}
+
 * {
   margin: 0;
   padding: 0;
 }
 
 .Light {
-  background-color: ghostwhite;
+  background: var(--main-gradient-r);
   color: #282c34;
 }
 

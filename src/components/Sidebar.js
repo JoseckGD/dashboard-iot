@@ -34,8 +34,8 @@ export const Sidebar = () => {
                      {index === 0 && (
                         <img src={userA} className='img-logo' alt='logo' />)
                      }
-                     {index !== 0 &&
-                        item.title}
+                     {/* {index !== 0 &&
+                        item.title} */}
                   </p>
                   {item.btn.map((btn) => (
                      <Navlink

@@ -1,11 +1,3 @@
-:root {
-   --main-color: #282c34;
-   --main-color-50: #282c3460;
-   --main-bg: cornflowerblue;
-   --text: ghostwhite;
-   --text-dark: #282c34;
-}
-
 /*    S I D E B A R     */
 
 .Sidebar {
@@ -162,10 +154,9 @@
    transition: all 0.5s ease-in-out;
 }
 
-.category.exit .btn:hover {
-   box-shadow: 0px 5px 20px 1px #282c3450;
+/* .category.exit .btn:hover {
    transition: all 0.5s ease-in-out;
-}
+} */
 
 
 .category.Dashboard .btn.btn-primary {
@@ -174,7 +165,7 @@
    box-shadow: 0px 5px 20px 1px #282c3480;
 }
 
-.category.Dashboard .btn:hover .tooltip {
+.category.Dashboard .btn:hover .btn:not(.tooltiptext) {
    filter: invert(1);
    transition: all 0.5s ease-in-out;
 }
@@ -202,6 +193,6 @@
 }
 
 
-.btn-active {
+.btn-active:not(.btn.tooltiptext) {
    filter: invert(1);
 }

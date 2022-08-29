@@ -1,6 +1,5 @@
 import '../styles/LoginPage.css';
 import logoUser from '../img/user.png';
-import { Navlink } from '../components/Navlink';
 import { useStateContext } from '../contexts/ContextProvider';
 
 export const LoginPage = ({ rol }) => {

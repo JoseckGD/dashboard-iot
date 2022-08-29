@@ -19,7 +19,7 @@ function App() {
           <Route exact path='/tipo-usuario' element={<TipoUsuarioPage />} />
           <Route exact path='/login_Gerente' element={<LoginPage rol='gerente' />} />
           <Route exact path='/login_Admin' element={<LoginPage rol='administrador' />} />
-          <Route exact path='/login_Ingeniero' element={<LoginPage rol='ingeniero' />} />
+          <Route exact path='/login_Operador' element={<LoginPage rol='Operador' />} />
           <Route exact path='/dispositivos' element={<DispositivosPage />} />
           <Route exact path='/usuarios' element={<UsuariosPage />} />
           <Route exact path='/reportes' element={<ReportesPage />} />

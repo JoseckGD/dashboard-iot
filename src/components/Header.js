@@ -5,7 +5,7 @@ import { Button } from './Button';
 import { ToggleLightDark } from './ToggleLightDark';
 import { NavLink } from 'react-router-dom';
 
-export const Header = () => {
+export const Header = ({ btn }) => {
    return (
       <header>
          <NavLink to="/">
@@ -15,11 +15,12 @@ export const Header = () => {
          </NavLink>
 
          <ToggleLightDark />
-
-         <div className="btn-header">
-            <Button text='Opcion 1' icon={homepage} bgColor={'#6495ed'} />
-            <Button text='Opcion 2' icon={homepage} bgColor={'#EF5B5B'} />
-         </div>
+         {!btn &&
+            <div className="btn-header">
+               <Button text='Opcion 1' icon={homepage} bgColor={'#6495ed'} />
+               <Button text='Opcion 2' icon={homepage} bgColor={'#EF5B5B'} />
+            </div>
+         }
       </header>
    )
 }

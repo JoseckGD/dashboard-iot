@@ -20,11 +20,10 @@
 
 .cardTipoUsuario:hover {
    transform: translateY(-1em);
-   transition: all 0.5s ease-in-out;
 }
 
 .cardTipoUsuario .imgIcon {
-   width: 100%;
+   width: 100% auto;
    height: 100% auto;
    border-radius: 100%;
 
@@ -50,4 +49,24 @@
    text-align: center;
    font-size: 2em;
    font-weight: 600;
+}
+
+@media only screen and (max-width: 1000px) {
+   .cardTipoUsuario {
+      width: 18em;
+   }
+
+   .cardTipoUsuario .txtTipo p {
+      font-size: 1.5em;
+   }
+}
+
+@media only screen and (max-width: 900px) {
+   .cardTipoUsuario {
+      width: 13em;
+   }
+
+   .cardTipoUsuario .txtTipo p {
+      font-size: 1.5em;
+   }
 }
