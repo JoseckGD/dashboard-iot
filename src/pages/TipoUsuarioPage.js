@@ -3,8 +3,10 @@ import '../styles/TipoUsuarioPage.css';
 import icon from '../img/user.png';
 import { NavLink } from 'react-router-dom';
 import { Header } from '../components/Header';
+import { useTitle } from '../hooks/useTitle';
 
 export const TipoUsuarioPage = () => {
+   useTitle('Dashboard IoT | Tipo de usuario');
    return (
       <>
          <Header btn={true} />

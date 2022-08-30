@@ -1,10 +1,13 @@
 import '../styles/LoginPage.css';
 import logoUser from '../img/user.png';
 import { useStateContext } from '../contexts/ContextProvider';
+import { useTitle } from '../hooks/useTitle';
 
 export const LoginPage = ({ rol }) => {
 
    const { currentMode } = useStateContext();
+
+   useTitle('Dashboard IoT | Login ' + rol);
 
    return (
       <div className='Login'>
