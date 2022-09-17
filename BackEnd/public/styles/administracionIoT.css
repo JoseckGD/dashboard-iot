@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;600&family=Josefin+Slab:wght@700&display=swap');
+
+:root{
+   --main-gradient:radial-gradient(circle, rgba(125,155,245,0.7) 0%, rgba(125,155,245,0.21) 100%);
+   --btn-gradient-red:-webkit-radial-gradient(top left, rgba(245, 125, 125, .70), rgba(245, 125, 125, .21));
+   --btn-gradient-green:-webkit-radial-gradient(top left, rgba(125,245,137,0.7), rgba(149,245,125,0.21));
+   --btn-gradient-blue:-webkit-radial-gradient(top left, rgba(125,155,245,.70), rgba(125,155,245,0.21));
+   --main-color : #7D9BF5;
+}
+
+
+/*SETTINGS*/
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html{
+   font-size: 16px;
+   overflow-x: hidden;
+}
+
+body{
+   background-color: #E6EEF4;
+   font-family:'Hind Madurai', sans-serif;
+}
+
+button{
+   border: none;
+   outline: none;
+   padding:.7em 1em;
+   border-radius: 0.5em;
+   margin: 0.2em;
+   box-shadow: 0 0.25em 0.3em rgba(0, 0, 0, 0.30);
+   transition: all 0.3s ease;
+}
+
+button:hover{
+   transform: scale(.95);
+   cursor:pointer;
+}
+
+.home-section{
+   margin: 0;
+   position: relative;
+   min-height: 100vh;
+   left: 18.75em;
+   width: calc(100% - 18.75em);
+   top: 0;
+   transition: all 0.4s ease;
+   z-index: 2;
+ }
+
+ .menu .nav-container.closeNavbar ~ .home-section{
+   left: 4.5em;
+   width: calc(100% - 4.5em);
+ }
+
+
+/*Main - STYLES*/
+main{
+   padding: 0 2em;    
+}
+
+
+/*FORM - STYLES*/
+.opacity.is-active{
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.form.is-active{
+   display: inline-block;
+   animation: zoom 0.7s;
+}
+
+.form{
+   display: none;
+
+   position: fixed;
+   left: 0;
+   right: 0;
+   margin:1em auto;
+
+   width: 70%;
+   background-color: white;
+
+   padding: 1em;
+   border-radius: 0.3em;
+}
+
+@keyframes zoom {
+   0% {transform: scale(0);}
+   100% {transform: scale(1);}
+}
+
+.form form{
+   margin: auto;
+   width: 100%;
+}
+
+.form input{
+   width: 100%;
+   height: 2em;
+   outline: none;
+   padding-left: 0.3em;
+   border-radius: 0.2em;
+   border: 1px solid rgb(117, 117, 117);
+}
+
+.form .input-container{
+   margin-bottom: 0.8em;
+}
+
+.form button{
+   background: var(--btn-gradient-blue);
+   padding-left: 4em;
+   padding-right: 4em;
+}
+
+.form .sk-flow{
+   display: none;
+   margin: auto;
+}
+
+.form .sk-flow.is-active{
+   display: flex;
+   height: 100%;
+   min-width: auto;
+}
+
+.form .loader{
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+
+   height: 2.5em;
+}
+
+.form .loader .warn{
+   display: none;
+   color:green;
+   font-size: 1.1em;
+}
+
+.form .loader .warn.is-active{
+   display: inline-block;
+   color:green;
+   font-size: 1.1em;
+}
+
+.form .actions{
+   float: left;
+}
+
+/*TABLE - STYLES*/
+
+.tabla{
+   width: 100%;
+   overflow-x: scroll;
+   margin-bottom: 0.5em;
+}
+
+table{
+   background: var(--main-gradient);
+   height: auto;
+   border-collapse: separate;
+   border-spacing: 1em 0.5em;
+   overflow-x: hidden !important;
+   width: 100%;
+}
+
+table thead th{
+   background-color: white;
+   padding: 0.6em;
+   border-radius:0.6em;
+   box-shadow: 0em 0.15em  0.3em rgba(0, 0, 0, 0.30);
+
+   font-weight: 600;
+}
+
+tbody{
+   background-color: white;
+   margin: 3em;
+}
+
+table tbody td{
+   border-radius: 0.6em;
+   text-align: center;
+}
+
+table button{
+   padding:.5em 1em;
+   margin: 0.3em;
+}
+
+table .btns-table{
+   margin: 0.1em auto;
+}
+
+table .btns-table button:nth-child(1){
+   background: var(--btn-gradient-green);
+}
+
+table .btns-table button:nth-child(2){
+   background: var(--btn-gradient-red);
+}
+
+.btn-new{
+   width: 100%;
+   text-align: right;
+}
+
+.btn-new button{
+   background: var(--btn-gradient-blue);
+   margin-bottom: 1em;
+}
+
+/*Scroll Styles*/
+.tabla::-webkit-scrollbar {
+   -webkit-appearance: none;
+}
+
+.tabla::-webkit-scrollbar:horizontal{
+   height:0.7em;
+}
+
+.tabla::-webkit-scrollbar-thumb {
+   background-color: var(--main-color);
+   border-radius: 20px;
+}
+
+@media only screen and (min-width : 481px) and (min-height: 321px) and (max-width:767px){
+   html{
+       font-size: 12px;
+   }
+
+   .form .actions{
+      width: 100%;
+      text-align: center;
+      float: left;
+   }
+}
+
+@media only screen and (min-width:768px) and (max-width:1034px){
+   html{
+       font-size: 14px;
+   }
+}

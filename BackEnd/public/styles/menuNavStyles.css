@@ -1,0 +1,26 @@
+:root{
+    --MainColor:#7D9BF5;
+    --main-gradient:-webkit-radial-gradient(top left, rgba(125,155,245,.70), rgba(125,155,245,0.21));
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 18.75em;
+    height: 100vh;
+    background-color: var(--MainColor);
+    background: var(--main-gradient);
+
+}
+
+.nav{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

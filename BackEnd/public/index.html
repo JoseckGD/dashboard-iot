@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dashboard IoT</title>
+   <link rel="stylesheet" href="./styles/DashboardIoT.css">
+   <link rel="stylesheet" href="./styles/normalize.css">
+   <script src="./scripts/autenticacion.js" type="module"></script>
+</head>
+
+<body>
+   <div class="menu"> </div>
+
+   <section class="home-section">
+      <div class="header"></div>
+
+      <main>
+         <div class="container-main">
+            <h1>Dispositivos IoT</h1>
+            <div class="box-main">
+               <div class="img">a</div>
+               <div class="img">b</div>
+               <div class="txt">
+                  <p>txt a</p>
+               </div>
+               <div class="txt">
+                  <p>txt b</p>
+               </div>
+            </div>
+
+            <div class="txt-titulo-medio">
+               <p>Titulo texto</p>
+            </div>
+
+            <div class="box-secondary">
+               <div class="img">a</div>
+               <div class="img">b</div>
+               <div class="img">c</div>
+               <div class="txt">
+                  <p>txt a</p>
+               </div>
+               <div class="txt">
+                  <p>txt b</p>
+               </div>
+               <div class="txt">
+                  <p>txt c</p>
+               </div>
+            </div>
+         </div>
+      </main>
+   </section>
+
+
+</body>
+
+<script>
+   //Insertar la Navbar
+   $(document).ready(function () {
+      $('.menu').load('./pages/Navbar.html');
+   });
+   
+   //Insertar Header
+   $(document).ready(()=>{
+      $('.header').load('./pages/Header.html');
+   })
+</script>
+
+<script src="./scripts/Index.js"></script>
+</html>

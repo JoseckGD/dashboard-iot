@@ -1,0 +1,51 @@
+
+*{
+    box-sizing: border-box;
+}
+
+/*HEADER - STYLES*/
+.header figure{
+   margin-left: 0;
+}
+
+figure{
+   display: inline-block;
+   height: 100%;
+   margin: 0;
+}
+
+figure img{
+   height: 3em;
+}
+
+header{   
+   display: flex;
+   align-items:center;
+   justify-content:space-between;
+   flex-wrap:wrap;
+
+   height: auto;
+
+   padding: 0 2em;
+   margin-top: 1em;
+}
+
+
+header button{
+   padding-left:  2.5em;
+   padding-right: 2.5em;
+   margin-right: 0.5em;
+   background: var(--btn-gradient-blue);
+}
+
+@media only screen and (min-width : 481px) and (min-height: 321px) and (max-width:767px){
+   html{
+       font-size: 12px;
+   }
+}
+
+@media only screen and (min-width:768px) and (max-width:1034px){
+   html{
+       font-size: 14px;
+   }
+}

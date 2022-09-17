@@ -8,9 +8,9 @@ import './App.css';
 import { Error404Page } from "./pages/Error404Page";
 import { LoginPage } from "./pages/LoginPage";
 import { TipoUsuarioPage } from "./pages/TipoUsuarioPage";
-
 function App() {
   const { currentMode } = useStateContext();
+
   return (
     <div className={currentMode}>
       <HashRouter>

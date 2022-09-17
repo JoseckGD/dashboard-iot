@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+   --main-bg-color: #FFFCF7;
+   --main-text-color: #11101D;
+   --main-color: #7D9BF5;
+   --secondary-color: #11101D;
+ }
+
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+a{
+   text-decoration: none;
+   color : var(--main-text-color);
+}
+
+body{
+   background-color: var(--main-bg-color);
+   box-sizing: border-box;
+   font-family: 'Roboto';
+   color: var(--main-text-color) ;
+   min-height: 300px;
+}
+
+.close{
+   position: absolute;
+   top: 0;
+   right: 0;
+   margin: 0.5em !important;
+   padding: 0.5em !important;
+}
+
+.closeNavbar .close{
+   width: 100%;
+   margin: 0.5em 0 !important;
+   padding: 0.5em 0 !important;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.btns-close{
+   cursor: pointer;
+   background-color: var(--main-color);
+   border-radius: 100px;
+   /*padding: 0.5em !important;*/
+   padding: 0.5em !important;
+   box-shadow: 0px 5px 20px 1px var(--main-color) ;
+   transition: all 0.4s ease !important;
+   z-index: 10;
+   /*
+      width: 25px !important;
+      height: 25px !important;
+   */
+   width: 2.5em !important;
+   height: 2.5em !important;
+}
+
+.btns-close:hover{
+   transition: all 0.4s ease;
+   box-shadow: 0px 5px 20px 1px var(--main-text-color);
+}
+
+ .nav-container{
+   position: fixed;
+   width: 18.75em;
+   height: 100%;
+   overflow: auto;
+   left: 0;
+   top: 0;
+   margin: 0;
+   background: #7D9CF5B3;
+   background: radial-gradient(ellipse at center, #7d9cf5b3, #7d9cf536);
+   box-shadow: 0px 0px 15px 3px #11101D;
+   transition: all 0.4s ease;
+}
+
+.nav-main{
+   width: 100%;
+   height: 100% ;
+   display: inline-flex;
+   flex-direction: column;
+   flex-wrap: nowrap;
+   justify-content: space-around;
+   align-items: center;
+   align-content: center;
+}
+
+.nav-main .perfil{
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+}
+
+.perfil .logo-perfil .img-logo{
+   width: calc(100%-200px);
+   height: calc(100%-200px);
+   border-radius: 100%;
+   transition: all 0.4s ease;
+}
+
+.icon-user{
+   width: 100%;
+   height: 100%;
+}
+
+.perfil .rol{
+   width: 100%;
+}
+.perfil .rol .txt-rol{
+   text-align: center;
+   font-size: 24px;
+}
+
+.closeNavbar .rol .txt-rol{
+   display: none;
+}
+
+.btns{
+   width: 100%;
+   height: 100%;
+   display: inline-flex;
+   flex-direction: column;
+   flex-wrap: nowrap;
+   justify-content: space-around;
+   align-items: center;
+   align-content: center;
+   justify-items: center; 
+}
+
+.btns div{
+   width: 90%;
+   height: 100%;
+}
+
+.btns div .btn{
+   width: 100%;
+   padding: 0.7em;
+   border-radius: 1em;
+   border: none;
+   cursor: pointer;
+   background-color: transparent;
+   color: var(--main-text-color) ;
+   font-size: 16px;
+   text-align: start;
+   display: flex;
+   align-items: center;
+   margin: 0.2em;
+   box-shadow: 0 0.25em 0.3em rgb(0 0 0 / 30%);
+   transition: all 0.4s ease;
+}
+ 
+.closeNavbar .btns div .btn{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.closeNavbar .btns div .btn{
+   margin: 0;
+}
+
+.closeNavbar .btns div .btn .txt-btn{
+   display: none;
+}
+
+.icon{
+   margin: 0.7em;
+   margin-right: 10px;
+}
+
+.closeNavbar .icon{
+   margin: 0;
+   width: auto;
+   height: 20px;
+}
+
+.btns div .btn:hover{
+   background-color: var(--main-bg-color);
+   color: var(--main-color);
+   font-weight: 500;
+   transform: scale(.95);
+   transition: all 0.4s ease;
+}
+
+.logout{
+   width: 100%;
+   height: 100%;
+   display: inline-flex;
+   flex-direction: column;
+   flex-wrap: nowrap;
+   justify-content: flex-end;
+   align-items: center ;
+}
+
+.logout .btn{
+   width: 70%;
+   padding: .8em;
+   border-radius: 500px;
+   border: none;
+   cursor: pointer;
+   background-color: var(--secondary-color);
+   color: var(--main-bg-color) ;
+   font-size: 16px;
+   margin: 0 0 1em 0; 
+   box-shadow: 0px 5px 20px 1px var(--secondary-color);
+   transition: all 0.4s ease;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   
+} 
+.closeNavbar .logout .btn{
+   width: 100%;
+   border-radius: 0;
+   margin: 0;
+}
+.closeNavbar .logout .btn .txt-btn{
+   display: none;
+}
+
+.icon-logout{
+   width: auto;
+   height: 16px;
+   margin-right: 5px;
+}
+
+.closeNavbar .icon-logout{
+   margin: 0;
+   height: 20px;
+}
+
+.logout .btn:hover{
+   background-color: var(--main-color);
+   box-shadow: 0px 5px 20px 1px var(--main-color);
+   transition: all 0.4s ease;
+}
+       
+.closeNavbar{
+   position: fixed;
+   width: 4.5em;
+   height: 100%;
+   overflow: auto;
+   left: 0;
+   top: 0;
+   margin: 0;
+   transition: all 0.4s ease;
+}
+
+
+/* responsive desing tablet */
+
+@media (max-width: 768px){
+
+   .nav-container{
+      width: 15.625em;
+      font-size: 14px;
+   }
+
+   .closeNavbar{
+      width: 4.5em;
+   }
+
+   .closeNavbar .icon{
+      width: auto ;
+      height: 1.5em;
+   }
+
+   .closeNavbar .icon-logout{
+      height: 1.5em;
+   }
+}

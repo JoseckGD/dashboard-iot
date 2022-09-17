@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;600&family=Josefin+Slab:wght@700&display=swap');
+
+:root{
+   --main-gradient:radial-gradient(circle, rgba(125,155,245,0.7) 0%, rgba(125,155,245,0.21) 100%);
+   --btn-gradient-red:-webkit-radial-gradient(top left, rgba(245, 125, 125, .70), rgba(245, 125, 125, .21));
+   --btn-gradient-green:-webkit-radial-gradient(top left, rgba(125,245,137,0.7), rgba(149,245,125,0.21));
+   --btn-gradient-blue:-webkit-radial-gradient(top left, rgba(125,155,245,.70), rgba(125,155,245,0.21));
+   --main-bg-color: #FFFCF7;
+   --main-color: #7D9BF5;
+   --secondary-color: #11101D;
+}
+
+
+/*SETTINGS*/
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html{
+   font-size: 16px;
+   overflow: hidden;
+}
+
+body{
+   background-color: #E6EEF4;
+   font-family:'Hind Madurai', sans-serif;
+}
+
+button{
+   border: none;
+   outline: none;
+   padding:.7em 1em;
+   border-radius: 0.5em;
+   margin: 0.2em;
+   box-shadow: 0 0.25em 0.3em rgba(0, 0, 0, 0.30);
+}
+
+button:hover{
+   transform: scale(.95);
+   cursor:pointer;
+}
+
+.home-section{
+   margin: 0;
+   position: relative;
+   min-height: 100vh;
+   left: 18.75em;
+   width: calc(100% - 18.75em);
+   top: 0;
+   transition: all 0.4s ease;
+   z-index: 2;
+ }
+ 
+ .menu .nav-container.closeNavbar ~ .home-section{
+   left: 4.5em;
+   width: calc(100% - 4.5em);
+ }
+
+/*HEADER - STYLES*/
+.header figure{
+   margin-left: 0;
+}
+
+img{
+   max-width: 100%;
+   height: auto;
+}
+
+figure{
+   display: inline-block;
+   height: 100%;
+   margin: 0;
+}
+
+figure img{
+   height: 100%;
+}
+
+header{   
+   display: flex;
+   align-items:center;
+   justify-content:space-between;
+   flex-wrap:wrap;
+
+   height: 5em;
+
+   padding: 0 2em;
+   margin-top: 1em;
+}
+
+header button{
+   padding-left:  2.5em;
+   padding-right: 2.5em;
+   background: var(--btn-gradient-blue);
+}
+
+main{
+   padding: 0 2em;    
+}
+
+/*BOX MAIN*/
+
+.box-main{
+   /* background: var(--main-gradient); */
+   width: 100%;
+   display: grid; 
+   grid-template-columns: 2fr 1fr; 
+   grid-template-rows: 1fr .1fr; 
+   gap: 1em 2em; 
+   grid-template-areas: 
+     ". ."
+     ". ."; 
+   align-content: space-evenly; 
+   align-items: stretch; 
+   padding: 0;
+}
+
+.box-main div{
+   background-color: var(--main-bg-color);
+   border-radius: 1em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.box-main .img{
+   width: 100%;
+   height: 10em;
+   box-shadow: 0em 0.15em  0.3em rgba(0, 0, 0, 0.30);
+}
+
+.box-main .txt{
+   width: 100%;
+   height: 2em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.box-main .txt p{
+   background: var(--btn-gradient-blue);
+   border-radius: 1em;
+   width: 80%;
+   height: 100%;
+   text-align: center;
+   padding: 0.5em;
+   box-shadow: 0em 0.15em  0.3em rgba(0, 0, 0, 0.30);
+}
+
+/* txt medio  */
+
+.txt-titulo-medio{
+   width: 50%;
+   border-radius: 1em;
+   box-shadow: 0em 0.15em  0.3em rgba(0, 0, 0, 0.30);
+   margin: 1.5em 0 1.5em 0;
+}
+.txt-titulo-medio p{
+   width: 100%;
+   padding: 1em;
+}
+
+
+/* BOX SECONDARY */
+
+.box-secondary{
+   /* background: var(--main-gradient); */
+   width: 100%;
+   display: grid; 
+   grid-template-columns: 1fr 1fr 1fr; 
+   grid-template-rows: .1fr .1fr  .1fr; 
+   gap: 1em 2em; 
+   grid-template-areas: 
+     ". . ."
+     ". . ."; 
+   align-content: space-evenly; 
+   align-items: stretch; 
+   padding: 0;
+}
+
+.box-secondary div{
+   background-color: var(--main-bg-color);
+   border-radius: 1em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.box-secondary .img{
+   width: 100%;
+   height: 10em;
+   box-shadow: 0em 0.15em  0.3em rgba(0, 0, 0, 0.30);
+}
+
+.box-secondary .txt{
+   width: 100%;
+   height: 2em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.box-secondary .txt p{
+   background: var(--btn-gradient-blue);
+   border-radius: 1em;
+   width: 80%;
+   height: 100%;
+   text-align: center;
+   padding: 0.5em;
+   box-shadow: 0em 0.15em  0.3em rgba(0, 0, 0, 0.30);
+}
+
+
+/* responsive desing tablet */
+
+@media (max-width: 768px){
+   .home-section{
+      left: 15.625em;
+   }
+}

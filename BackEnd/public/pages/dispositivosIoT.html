@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>DashboardIoT</title>
+   <link rel="stylesheet" href="../styles/administracionIoT.css">
+   <link rel="stylesheet" href="../styles/normalize.css">
+   <link rel="stylesheet" href="../styles/spinkit.css">
+   <link rel="stylesheet" href="../styles/validations.css">
+   <script src="../scripts/autenticacion.js" type="module"></script>
+</head>
+
+<body>
+   <div class="menu"></div>
+
+   <section class="home-section">
+
+      <div class="header"></div>
+
+      <main>
+
+         <div class="opacity"></div>
+
+         <div class="container-main">
+            <h1>Dispositivos IoT</h1>
+
+            <div class="form">
+               <form id="form-devices" action="">
+                  <div class="input-container">
+                     <label for="">Nombre:</label><br>
+                     <input data-validation = "required" type="text" name="nombre" id="nombre" placeholder="Nombre">
+                  </div>
+   
+                  <div class="input-container">
+                     <label for="">Tipo:</label><br>
+                     <input data-validation = "required" type="text" name="tipo" id="tipo" placeholder="Tipo">
+                  </div>
+   
+                  <div class="input-container">
+                     <label for="">Estado:</label><br>
+                     <input data-validation = "required" type="text" name="estado" id="estado" placeholder="Estado">
+                  </div>
+   
+                  <div class="input-container">
+                     <label for="">Nombre Planta:</label><br>
+                     <input data-validation = "required" type="text" name="nombre_planta" id="nombre_planta" placeholder="Nombre Planta">
+                  </div>
+   
+                  <div class="input-container">
+                     <label for="">Variable Medida:</label><br>
+                     <input data-validation = "required only-words" type="text" name="variable_medida" id="variable_medida" placeholder="Variable Medida">
+                  </div>
+
+                  <div data-warn></div>
+
+
+                  <input id="idDevice" type="hidden" value="">
+
+                  <div class="actions-container">
+                     <div class="actions">
+                        <button id="guardar" type="submit">Guardar</button>
+                        <button id="cancelar">Cerrar</button>
+                     </div>
+                     
+                     <div class="loader">
+                        <div class="sk-flow">
+                           <div class="sk-flow-dot"></div>
+                           <div class="sk-flow-dot"></div>
+                           <div class="sk-flow-dot"></div>
+                        </div>
+
+                        <p class="warn">Registro Agregado</p>
+                     </div>
+                  </div>
+
+               </form>
+            </div>
+
+            <div class="tabla">
+               <table>
+                  <thead>
+                     <tr>
+                        <th>Modelo ID</th>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th>Nombre Planta</th>
+                        <th>Variable Medida</th>
+                        <th>Acciones</th>
+                     </tr>
+                  </thead>
+
+                  <tbody>
+
+                  </tbody>
+               </table>
+            </div>
+            <div class="btn-new">
+               <button id="new">Agregar Nuevo</button>
+           </div>
+         </div>
+      </main>
+   </section>
+
+   <template id="row-device">
+      <tr>
+         <td id="id"></td>
+         <td id="nombre"></td>
+         <td id="tipo"></td>
+         <td id="estado"></td>
+         <td id="nombre_planta"></td>
+         <td id="data_medida"></td>
+         <td>
+            <div class="btns-table">
+               <button class="actualizar" data-data>Actualizar</button>
+               <button class="eliminar" data-id>Eliminar</button>
+            </div>
+         </td>
+      </tr>
+   </template>
+
+</body>
+
+<script>
+   //Insertar la Navbar
+   $(document).ready(function () {
+      $('.menu').load('./Navbar.html');
+   });
+
+   //Insertar Header
+   $(document).ready(()=>{
+      $('.header').load('./Header.html');
+   })
+</script>
+
+<script src="../scripts/Index.js"></script>
+<script src="../scripts/crud_dispositivos_iot.js" type="module"></script>
+
+</html>

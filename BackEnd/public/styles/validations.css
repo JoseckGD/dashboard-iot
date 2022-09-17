@@ -1,0 +1,27 @@
+/*Source: https://github.com/EfrenOR/validations.git*/
+
+input{
+    outline: none;
+    display: block;
+}
+
+span{
+    display: inline-block;
+    font-weight: 400;
+    color:red;
+    z-index: 9999;
+    margin-top: 0.4em;
+    margin-bottom: 0.5em;
+}
+
+.border-red-400{
+    border: 2px solid red !important;
+}
+
+.border-green-600{
+    border: 2px solid #1b921b !important;
+}
+
+.hidden{
+    display: none;
+}
