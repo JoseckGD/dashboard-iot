@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.form-crud {
+  position: relative;
+  width: 90%;
+  overflow: hidden;
+  margin: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-crud div {
+  position: relative;
+  min-width: 100%;
+  width: 100%;
+}
+
+.form-crud input {
+  border: 0;
+  outline: none;
+  padding: 0.6rem;
+  margin: 1rem 0rem;
+
+  border-radius: 0.4rem;
+  width: 100%;
+}
+
+.form-crud select {
+  border: 0;
+  outline: none;
+  padding: 0.55rem;
+  border-radius: 0.4rem;
+  margin: 1rem 2rem;
+  width: 100%;
+}
+
+.form-crud .Usuario {
+  min-width: 30%;
+  width: 30%;
+}
+
+.form-crud .Rol {
+  min-width: 30%;
+  width: 30%;
+}
+
+.form-crud .btns-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-crud .btns-form button {
+  padding: 0.5rem;
+  min-width: 9rem;
+  border: none;
+  outline: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-crud .btns-form img {
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.form-crud .btns-form button:nth-child(1) {
+  border: 2px solid cornflowerblue;
+  outline: none;
+
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 0.5rem;
+}
+
+.form-crud .btns-form button:nth-child(2) {
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
