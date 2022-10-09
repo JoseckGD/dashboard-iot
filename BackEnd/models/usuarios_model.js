@@ -14,6 +14,15 @@ module.exports = {
                     callback(err, rows, resolve, reject)
                 })
             })
+        },
+
+        deleteUser:function(id){
+            return new Promise((resolve, reject)=>{
+                con.query(`DELETE FROM usuario WHERE id_usuario = ${id}` , (err, rows)=>{
+                    callback(err, rows, resolve, reject)
+                })
+            })
         }
+
     }
 }

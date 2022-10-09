@@ -23,6 +23,25 @@ module.exports = {
           })
       },
 
+      deleteuser: (req, res) => {
+
+        let id = req.params.id;
+        _model.methods.deleteUser(id)
+          .then(rows => {
+            res.send({
+              success: true,
+              message: 'El usuario ha sido eliminado exitosamente'
+            })
+          })
+          .catch(err => {
+            res.send({
+              success: false,
+              message: 'Error al eliminar el usuario',
+              result: err,
+            })
+          })
+      },
+
       selectuserauth: (req, res) => {
     let data = {
       nombre: req.body.user,
