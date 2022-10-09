@@ -12,5 +12,5 @@ CREATE TABLE dispositivos_iot(
     nombre varchar(100),
     tipo varchar(100),
     estado varchar(50),
-    dato_medida varchar(50),
+    dato_medida varchar(50)
 );

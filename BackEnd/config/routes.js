@@ -1,5 +1,6 @@
 const express = require('express')
-const  {selectdevices, deletedevice, insetdevice, updatedevice, selectuserauth} = require('../controller/controller.js')
+const {selectdevices, deletedevice, insetdevice, updatedevice, selectuserauth} = require('../controller/controller.js')
+const {selectusers} = require('../controller/user_controller.js')
 const Router = express.Router();
 const session = require('express-session'); 
 
@@ -11,8 +12,11 @@ Router.post('/insertdevice', insetdevice);
 Router.put('/updatedevice/:id', updatedevice);
 Router.post('/selectuserauth', selectuserauth);
 
+//RUTAS DE USUARIOS
+Router.get('/selectusers', selectusers);
 
-Router.get('/userauth', (req, res)=>{
+
+  Router.get('/userauth', (req, res)=>{
     if(req.session.nombre !== undefined){
         console.log("Bienvenido", req.session.nombre)
         res.send({
