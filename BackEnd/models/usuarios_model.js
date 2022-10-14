@@ -10,7 +10,7 @@ module.exports = {
     methods:{
         selectUser:function(){
             return new Promise((resolve, reject)=>{
-                con.query('SELECT * FROM usuario', (err, rows)=>{
+                con.query('SELECT id_usuario, nombre, numero_telefono, correo, rol FROM usuario', (err, rows)=>{
                     callback(err, rows, resolve, reject)
                 })
             })
