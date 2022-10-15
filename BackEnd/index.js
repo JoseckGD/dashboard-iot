@@ -4,7 +4,7 @@ const routes = require('./config/routes.js');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
-const port = 5000
+const port = 5051
 
 const app = express();
 app.use(cookieParser());

@@ -17,7 +17,7 @@ export const Formulario = ({ setActive, inputs, handleSubmit }) => {
         inputs.map(input =>
           <div className={`input-container ${input.split(':')[0]}`}>
             {
-              (input.split(':')[1] != 'select') ?
+              (input.split(':')[1] !== 'select') ?
                 <input
                   type={input.split(':')[1]}
                   name={input.split(':')[0]}

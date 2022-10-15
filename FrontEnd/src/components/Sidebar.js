@@ -13,7 +13,8 @@ export const Sidebar = () => {
 
    const {
       activeMenu,
-      handleCloseSideBar } = useStateContext();
+      handleCloseSideBar,
+      rolUser } = useStateContext();
 
    return (
       <nav className={`Sidebar ${!activeMenu && 'close'} `}>
@@ -38,13 +39,17 @@ export const Sidebar = () => {
                         item.title} */}
                   </p>
                   {item.btn.map((btn) => (
-                     <Navlink
-                        name={btn.name}
-                        type={btn.type}
-                        icon={btn.icon}
-                        index={index}
-                        key={btn.name}
-                     />
+                     index === 0 ?
+                        <p key={btn.name}>{rolUser}</p>
+                        :
+                        (<Navlink
+                           name={btn.name}
+                           type={btn.type}
+                           icon={btn.icon}
+                           index={index}
+                           key={btn.name}
+                        />)
+
                   ))}
                </div>
             ))
@@ -52,25 +57,3 @@ export const Sidebar = () => {
       </nav >
    )
 }
-         // <NavLink
-         //    to={btn.name === 'Home' ? '/' : `/${btn.name.toLocaleLowerCase()}`}
-         //    key={btn.name}
-         //    className={((navData) => (navData.isActive ?
-         //       (`btn btn-${btn.type} btn-active `)
-         //       :
-         //       (`btn btn-${btn.type}`)
-         //    ))
-         //    }>
-         //    {index !== 0 &&
-         //       <div className='icon'>
-         //          <img src={btn.icon} alt={btn.name} />
-         //       </div>
-         //    }
-         //    <p>
-         //       {btn.name}
-         //    </p>
-         //    {index !== 0 &&
-         //       <Tooltip text={btn.name} />
-         //    }
-
-         // </NavLink>

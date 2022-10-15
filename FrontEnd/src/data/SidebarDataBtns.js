@@ -43,7 +43,7 @@ export const buttonsData = [
       title: 'exit',
       btn: [
          {
-            name: 'Logout',
+            name: 'logout',
             type: 'exit',
             icon: exit,
          },

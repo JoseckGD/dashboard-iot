@@ -95,7 +95,7 @@ module.exports = {
   selectuserauth: (req, res) => {
     let data = {
       nombre: req.body.user,
-      contrasena: req.body.password,
+      contrasena: req.body.pass,
     }
 
     console.log(data)

@@ -2,8 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Tooltip } from './Tooltip';
 import defaultIcon from '../img/homepage.png';
+import { useStateContext } from '../contexts/ContextProvider';
 
 export const Navlink = ({ name, type, icon, index }) => {
+   const { handleCloseSesion, setAuth } = useStateContext();
 
    return (
       <NavLink
@@ -14,7 +16,9 @@ export const Navlink = ({ name, type, icon, index }) => {
             :
             (`btn btn-${type}`)
          ))
-         }>
+         }
+         onClick={type === 'exit' && (handleCloseSesion, setAuth)}
+      >
          {index !== 0 &&
             <div className='icon'>
                <img src={!icon ? defaultIcon : icon} alt={name} />

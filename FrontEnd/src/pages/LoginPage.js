@@ -2,64 +2,76 @@ import '../styles/LoginPage.css';
 import logoUser from '../img/user.png';
 import { useStateContext } from '../contexts/ContextProvider';
 import { useTitle } from '../hooks/useTitle';
-import { Ajax } from '../hooks/ajax';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import fetchAJAX from '../helpers/fetch';
 
+
+const initialForm = {
+  user: "",
+  pass: "",
+};
 
 export const LoginPage = ({ rol }) => {
 
-  const { currentMode } = useStateContext();
-  useTitle('Dashboard IoT | Login ' + rol);
-
-
-  //Auth - LogIn   PENDIENTE
-  const [user, setUser] = useState({ user: "", password: "" })
-  const [auth, setAuth] = useState();
+  const [form, setForm] = useState(initialForm);
   let pages = useNavigate();
 
-  useEffect(() => {
-    if (auth) {
-      localStorage.setItem('auth', true);
-      pages('/')
-    }
-  }, [auth])
+  const { currentMode, handleAuth, setRolConcurrentUser } = useStateContext();
+  //setRolConcurrentUser(rol);
+  useTitle('Dashboard IoT | Login ' + rol);
 
-
-  const handleClick = (e) => {
-
-    e.preventDefault();
-    Ajax({
-      url: 'http://localhost:5000/selectuserauth',
-      settings: {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
-      },
-      Success: (json) => {
-        if (json.success) {
-          setAuth(true);
-
-        } else {
-          setAuth(false)
-          window.alert(json.message)
-        }
-
-      },
-      Error: (error) => {
-        console.log(error)
-      }
-    })
-  }
+  //Auth - LogIn   PENDIENTE
 
   const handleChange = (e) => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value,
-    })
-  }
+    setForm({
+      ...form,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!form.user || !form.pass) {
+      alert("Datos incompletos");
+      return;
+    } else {
+
+      fetchAJAX({
+        url: 'http://localhost:5051/selectuserauth',
+        settings: {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(form)
+        },
+        resSuccess: (res) => {
+          //console.log(res)
+
+          if (res.success) {
+            setRolConcurrentUser(rol);
+            handleAuth();
+            pages('/');
+          } else {
+            handleAuth();
+            window.alert(res.message)
+          }
+
+        },
+        resError: (error) => {
+          console.log(error)
+        }
+      })
+
+    }
+    handleReset();
+  };
+
+  const handleReset = (e) => {
+    setForm(initialForm);
+  };
 
   //=======================
 
@@ -77,23 +89,23 @@ export const LoginPage = ({ rol }) => {
               <h3>{rol}</h3>
             </div>
 
-            <form id="login-form" className='login-form'>
+            <form onSubmit={handleSubmit} id="login-form" className='login-form'>
               <div className="input-form in-Text">
                 <label htmlFor="user" className="form-label">Usuario</label>
-                <input onChange={(e) => handleChange(e)} type="text" className="form-control"
+                <input onChange={handleChange} type="text" className="form-control"
                   id="user" name="user" aria-describedby="emailHelp"
-                  required placeholder='Ingrese su usuario' value={user.user} />
+                  required placeholder='Ingrese su usuario' value={form.user} />
               </div>
               <div className="input-form in-pass">
                 <label htmlFor="pass" className="form-label">Contraseña</label>
-                <input onChange={(e) => handleChange(e)} type="password" className="form-control"
+                <input onChange={handleChange} type="password" className="form-control"
                   id="pass" required
-                  placeholder='Ingrese su contraseña' value={user.password}
+                  placeholder='Ingrese su contraseña' value={form.pass}
                   name="password"
                 />
               </div>
               <p className="warn-auth">Error</p>
-              <button type="submit" className="btn-Submit" onClick={(e) => handleClick(e)}>Entrar</button>
+              <button type="submit" className="btn-Submit">Entrar</button>
             </form>
 
           </div>

@@ -1,0 +1,15 @@
+.tabla {
+   width: calc(100% - 2em);
+   background-color: rgba(161, 161, 161, 0.678);
+   backdrop-filter: blur(20px);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 1em;
+   margin-top: 1em;
+}
+
+.tabla table {
+   background-color: aliceblue;
+   width: 100%;
+}
