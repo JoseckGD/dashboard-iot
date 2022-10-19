@@ -24,7 +24,6 @@ module.exports = {
       },
 
       deleteuser: (req, res) => {
-
         let id = req.params.id;
         _model.methods.deleteUser(id)
           .then(rows => {
@@ -42,7 +41,33 @@ module.exports = {
           })
       },
 
-      selectuserauth: (req, res) => {
+      updateuser: (req, res) => {
+        console.log(req.params.id)
+        let data = {
+          id_usuario: req.params.id,
+          nombre: req.body.nombre,
+          numero_telefono: req.body.numero_telefono,
+          contrasena: req.body.contrasena,
+          correo: req.body.correo,
+          rol: req.body.rol
+        }
+    
+        _model.methods.updateUser(data)
+          .then(rows => {
+            res.send({
+              success: true,
+              message: 'Se han actualizado los datos del usuario'
+            })
+          })
+          .catch(err => {
+            res.send({
+              success: false,
+              message: 'Error al actualizar los datos del usuario'
+            });
+          })
+    },    
+
+    selectuserauth: (req, res) => {
     let data = {
       nombre: req.body.user,
       contrasena: req.body.password,
@@ -69,6 +94,7 @@ module.exports = {
         });
       })
   },
+
 
   selectuserauth: (req, res) => {
     let data = {

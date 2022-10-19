@@ -34,9 +34,9 @@ module.exports = {
         },
         updateDevice:function(data){
             return new Promise((resolve, reject)=>{
-                con.query(`UPDATE dispositivos_iot SET nombre = '${data.nombre}', tipo = '${data.tipo}', dato_medida = '${data.variable_medida}', nombre_planta = '${data.nombre_planta}' WHERE id_dispositivo = '${data.id}'`, (err, rows)=>{
+                con.query(`UPDATE dispositivos_iot SET nombre = '${data.nombre}', tipo = '${data.tipo}', dato_medida = '${data.variable_medida}', nombre_planta = '${data.nombre_planta}' WHERE id_dispositivo = '${data.id_usuario}'`, (err, rows)=>{
                     callback(err, rows, resolve, reject)
-                });
+                });      
             });
         }
     }
