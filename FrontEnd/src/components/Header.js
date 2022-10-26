@@ -17,8 +17,8 @@ export const Header = ({ btn }) => {
          <ToggleLightDark />
          {!btn &&
             <div className="btn-header">
-               <Button text='Opcion 1' icon={homepage} bgColor={'#6495ed'} />
-               <Button text='Opcion 2' icon={homepage} bgColor={'#EF5B5B'} />
+               <Button text='Opcion 1' icon={homepage} bgColor={'#6495ed'} evento={false} />
+               <Button text='Opcion 2' icon={homepage} bgColor={'#EF5B5B'} evento={false} />
             </div>
          }
       </header>

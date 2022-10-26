@@ -1,4 +1,3 @@
-
 import { useStateContext } from '../contexts/ContextProvider';
 import '../styles/stylesComponents/CardTipoUsuario.css';
 

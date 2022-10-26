@@ -4,30 +4,106 @@
 //inputs <- Es un arreglo con los datos para construir cada <input>
 //handleSubmit <- La función que controlara el submit del formulario
 
-export const Formulario = ({ setActive, inputs, handleSubmit }) => {
+import { useEffect, useState } from 'react';
+import { useStateContext } from '../contexts/ContextProvider';
+
+const initialForm = {
+  Nombre: "", //nombre:
+  Telefono: "", //numero_telefono:
+  Correo: "", //correo
+  Rol: "", //rol
+  id: null, //id_usuario
+};
+
+export const Formulario = ({ setActive, inputs }) => {
+
+  const [form, setForm] = useState(initialForm);
+
+  const {
+    updateData,
+    dataToEdit,
+    setDataToEdit,
+  } = useStateContext();
+
+  useEffect(() => {
+    if (dataToEdit) {
+      setForm(dataToEdit);
+    } else {
+      setForm(initialForm);
+    }
+  }, [dataToEdit]);
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const btnRegresar = (e) => {
-    setActive(false)
+    setActive(false);
+    setDataToEdit(null);
+    handleReset(e);
+  }
+
+  const handleReset = (e) => {
+    setForm(initialForm);
+    setDataToEdit(null);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (form.id === null) {
+      alert('create');
+      // createData(form);
+      // alert(verifyFormData());
+    } else {
+      alert('update');
+      // updateData(form);
+      alert(form.id_usuario + 'a' + dataToEdit.rol);
+      handleReset();
+    }
+    setActive(false);
+  };
+
+  const verifyFormData = () => {
+    if (!form.Nombre || !form.Telefono || !form.Correo || !form.Rol) {
+      alert("Porfavor, llene los campos");
+      return false;
+    }
+    return true;
   }
 
   return (
     <form onSubmit={(e) => handleSubmit(e)} className="form-crud" >
       {
         inputs &&
-        inputs.map(input =>
-          <div className={`input-container ${input.split(':')[0]}`}>
+        inputs.map((input, index) =>
+          <div className={`input-container ${input.split(':')[0]}`} key={index}>
             {
               (input.split(':')[1] !== 'select') ?
                 <input
                   type={input.split(':')[1]}
                   name={input.split(':')[0]}
                   placeholder={input.split(':')[0]}
+                  onChange={handleChange}
+                  value={
+                    form.id === null ?
+                      Object.values(form)[index]
+                      :
+                      Object.values(form)[index + 1]
+
+                    // Object.keys(form).map((campo, index) => (
+                    //   campo === input.split(':')[0] && Object.values(form)[index]
+                    // ))
+                  }
                 />
                 :
-                <select name={input.split(':')[0]} id="">
-                  <option value="">-- {input.split(':')[0]} --</option>
-                  <option value={input.split(':')[2]}>{input.split(':')[2]}</option>
-                  <option value={input.split(':')[3]}>{input.split(':')[3]}</option>
+                <select defaultValue={dataToEdit !== null ? dataToEdit.Rol : form.Rol} name={input.split(':')[0]} id="" onChange={handleChange}>
+                  <option value="" >-- {input.split(':')[0]} --</option>
+                  <option value={input.split(':')[2]} >{input.split(':')[2]}</option>
+                  <option value={input.split(':')[3]} >{input.split(':')[3]}</option>
                 </select>
             }
           </div>

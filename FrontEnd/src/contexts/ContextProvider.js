@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import fetchAJAX from '../helpers/fetch';
-import helpHttp from '../helpers/helpHttp';
+// import helpHttp from '../helpers/helpHttp';
 
 const StateContext = createContext();
 
@@ -20,6 +20,7 @@ export const ContextProvider = ({ children }) => {
 
   const [dbUser, setDbUser] = useState(null);
   const [dataAllUser, setDataAllUser] = useState([]);
+  const [dataToEdit, setDataToEdit] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   let url = "http://localhost:5051/selectusers";
@@ -124,6 +125,31 @@ export const ContextProvider = ({ children }) => {
     }
   }, [screenSize]);
 
+  //botnos OnClcik
+  const Eliminar = () => {
+    alert('click Eliminar')
+  }
+
+  const updateData = (data) => {
+    console.log(data);
+    // let endpoint = `${url}/${data.id}`;
+
+    // let options = {
+    //    body: data,
+    //    headers: { "content-type": "application/json" }
+    // };
+    // api.put(endpoint, options).then((res) => {
+    //    //console.log(res);
+    //    if (!res.err) {
+    //       let newData = db.map(el => el.id === data.id ? data : el);
+    //       setDb(newData);
+    //    } else {
+    //       setError(res);
+    //    }
+    // });
+
+  };
+
 
   const data = {
     currentMode,
@@ -144,7 +170,11 @@ export const ContextProvider = ({ children }) => {
     dataAllUser,
     dbUser,
     error,
-    loading
+    loading,
+    Eliminar,
+    updateData,
+    setDataToEdit,
+    dataToEdit
   };
 
   return (
