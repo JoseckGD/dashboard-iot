@@ -20,7 +20,8 @@ export const Formulario = ({ setActive, inputs }) => {
   const [form, setForm] = useState(initialForm);
 
   const {
-    updateData,
+    createUser,
+    // updateData,
     dataToEdit,
     setDataToEdit,
   } = useStateContext();
@@ -55,7 +56,10 @@ export const Formulario = ({ setActive, inputs }) => {
     e.preventDefault();
 
     if (form.id === null) {
-      alert('create');
+      // alert('create');
+      if (verifyFormData()) {
+        createUser(form);
+      }
       // createData(form);
       // alert(verifyFormData());
     } else {

@@ -8,6 +8,7 @@ export const HomePage = () => {
 
   //Auth - LogIn == PENDIENTE
   const { authUser } = useStateContext();
+  console.log(authUser);
   //=======================
 
   return (

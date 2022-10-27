@@ -16,22 +16,6 @@ export const UsuariosPage = () => {
 
   // console.log(active);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // if (!form.name || !form.constellation) {
-    //   alert("Datos incompletos");
-    //   return;
-    // }
-
-    // if (form.id === null) {
-    //   createData(form);
-    // } else {
-    //   updateData(form);
-    // }
-
-    // handleReset();
-  }
-
   const handleModify = (id) => {
     // console.log(id);
     setActive(false);

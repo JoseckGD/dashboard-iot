@@ -4,9 +4,9 @@ import '../styles/stylesComponents/Button.css';
 export const Button = ({ text, icon, bgColor, evento, eventoModify, id_usuario, dataUsuario }) => {
    const {
       setDataToEdit,
-      deleteData,
-      updateData,
-      dataToEdit,
+      // deleteData,
+      // updateData,
+      // dataToEdit,
    } = useStateContext();
 
 

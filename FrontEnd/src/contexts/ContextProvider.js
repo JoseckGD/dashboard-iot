@@ -19,7 +19,7 @@ export const ContextProvider = ({ children }) => {
   const [rolUser, setRolUser] = useState(!initialAuthRol ? 'rol' : initialAuthRol);
 
   const [dbUser, setDbUser] = useState(null);
-  const [dataAllUser, setDataAllUser] = useState([]);
+  // const [dataAllUser, setDataAllUser] = useState([]);
   const [dataToEdit, setDataToEdit] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -130,6 +130,52 @@ export const ContextProvider = ({ children }) => {
     alert('click Eliminar')
   }
 
+  // crear un Usuario
+  const createUser = (data) => {
+    // const dataF = {
+    //   id_usuario: data.id,
+    //   nombre: data.Nombre,
+    //   numero_telefono: data.Telefono,
+    //   correo: data.Correo,
+    //   rol: data.Rol
+    // }
+    // console.log(dataF);
+    // alert(data);
+
+    // fetchAJAX({
+    //   url: 'http://localhost:5051/insertuser',
+    //   resSuccess: (res) => {
+
+    //     if (res.success === true) {
+    //       setDbUser(res.result);
+    //       setError(null);
+    //     } else {
+    //       setDbUser(null);
+    //       setError(res.message);
+    //     }
+    //     setLoading(false);
+    //   },
+    //   resError: (err) => {
+    //     console.log(err);
+    //   }
+    // })
+    // data.id = Date.now();
+    // let options = {
+    //   body: data,
+    //   headers: { "content-type": "application/json" }
+    // };
+    // api.post(url, options).then((res) => {
+    //   //console.log(res);
+    //   if (!res.err) {
+    //     setDb([...db, res]);
+    //   } else {
+    //     setError(res);
+    //   }
+    // });
+    // setDb([...db, data]);
+  };
+
+  // actualizar data de usuario
   const updateData = (data) => {
     console.log(data);
     // let endpoint = `${url}/${data.id}`;
@@ -167,14 +213,15 @@ export const ContextProvider = ({ children }) => {
     setRolUser,
     setRolConcurrentUser,
     handleAuth,
-    dataAllUser,
+    // dataAllUser,
     dbUser,
     error,
     loading,
     Eliminar,
     updateData,
     setDataToEdit,
-    dataToEdit
+    dataToEdit,
+    createUser
   };
 
   return (

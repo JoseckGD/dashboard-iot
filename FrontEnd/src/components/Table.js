@@ -11,10 +11,10 @@ export const Table = ({ title, eventoModify }) => {
    const {
       dbUser: data,
    } = useStateContext();
-
+   // eslint-disable-next-line
    Object.prototype.rename_property = function (oldName, newName) {
       // no hacer nada si los nombre son iguales
-      if (oldName == newName) {
+      if (oldName === newName) {
          return this;
       }
       // Verificar si ya existe la propiedad con el nombre nuevo y evitar errores.

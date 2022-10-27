@@ -2,7 +2,7 @@ import '../styles/HomePage.css';
 import { Header } from '../components/Header'
 import { Sidebar } from '../components/Sidebar'
 import { useTitle } from '../hooks/useTitle';
-import { Table } from '../components/Table';
+// import { Table } from '../components/Table';
 
 export const DispositivosPage = () => {
    useTitle('Dispositivos IoT');
