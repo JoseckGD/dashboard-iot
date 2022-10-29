@@ -6,14 +6,13 @@ import { useStateContext } from '../contexts/ContextProvider';
 
 export const HomePage = () => {
 
-  //Auth - LogIn == PENDIENTE
+  //Auth - LogIn 
   const { authUser } = useStateContext();
-  console.log(authUser);
   //=======================
 
   return (
     <>
-      {authUser === false ? <Navigate to='/tipo-usuario' /> : (
+      {authUser === 'false' ? <Navigate to='/tipo-usuario' /> : (
         <>
           <Sidebar />
           <section className='homepage'>

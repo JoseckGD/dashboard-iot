@@ -15,9 +15,19 @@ const initialForm = {
   id: null, //id_usuario
 };
 
-export const Formulario = ({ setActive, inputs }) => {
+const initialFormAddUser = {
+  Nombre: "", //nombre:
+  Telefono: "", //numero_telefono:
+  Correo: "", //correo
+  Rol: "", //rol
+  Contrasena: "", //rcontrasna
+  RepeatContrasena: "", //repeat_contrasna
+  id: null, //id_usuario
+};
 
-  const [form, setForm] = useState(initialForm);
+export const Formulario = ({ setActive, inputs, isAddUser }) => {
+
+  const [form, setForm] = useState(isAddUser ? initialFormAddUser : initialForm);
 
   const {
     createUser,
@@ -30,7 +40,7 @@ export const Formulario = ({ setActive, inputs }) => {
     if (dataToEdit) {
       setForm(dataToEdit);
     } else {
-      setForm(initialForm);
+      setForm(initialFormAddUser);
     }
   }, [dataToEdit]);
 
@@ -48,7 +58,7 @@ export const Formulario = ({ setActive, inputs }) => {
   }
 
   const handleReset = (e) => {
-    setForm(initialForm);
+    setForm(initialFormAddUser);
     setDataToEdit(null);
   };
 

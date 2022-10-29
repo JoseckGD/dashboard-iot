@@ -9,13 +9,14 @@ import { useStateContext } from '../contexts/ContextProvider';
 export const TipoUsuarioPage = () => {
   useTitle('Dashboard IoT | Tipo de usuario');
 
-  //Auth - 
+  //Auth -
   const { authUser } = useStateContext();
+  // console.log(authUser === 'true')
   //================================
 
   return (
     <>
-      {authUser === true ? <Navigate to='/' /> : (
+      {authUser === 'true' ? <Navigate to='/' /> : (
         <>
           <Header btn={true} />
           <section className="tipoUsuario">

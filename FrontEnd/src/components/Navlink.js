@@ -5,7 +5,13 @@ import defaultIcon from '../img/homepage.png';
 import { useStateContext } from '../contexts/ContextProvider';
 
 export const Navlink = ({ name, type, icon, index }) => {
-   const { handleCloseSesion, setAuth } = useStateContext();
+   const { setAuthUser, handleCloseSesion } = useStateContext();
+
+   const closeSesion = () => {
+      handleCloseSesion();
+      setAuthUser(false);
+      window.localStorage.setItem('authUser', false);
+   }
 
    return (
       <NavLink
@@ -17,7 +23,7 @@ export const Navlink = ({ name, type, icon, index }) => {
             (`btn btn-${type}`)
          ))
          }
-         onClick={type === 'exit' && (handleCloseSesion, setAuth)}
+         onClick={type === 'exit' && (closeSesion)}
       >
          {index !== 0 &&
             <div className='icon'>

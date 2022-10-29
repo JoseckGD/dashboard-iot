@@ -15,7 +15,7 @@ export const ContextProvider = ({ children }) => {
   const [screenSize, setScreenSize] = useState(undefined);
   const [activeMenu, setActiveMenu] = useState(true);
 
-  const [authUser, setAuthUser] = useState(initialAuthUser === null && (initialAuthUser === true ? true : false));
+  const [authUser, setAuthUser] = useState(initialAuthUser);
   const [rolUser, setRolUser] = useState(!initialAuthRol ? 'rol' : initialAuthRol);
 
   const [dbUser, setDbUser] = useState(null);
@@ -47,6 +47,14 @@ export const ContextProvider = ({ children }) => {
 
   }, [url]);
 
+  useEffect(() => {
+    const isAuthUser = window.localStorage.getItem('authUser');
+    if (isAuthUser) {
+      setAuthUser(isAuthUser);
+    }
+  }, [authUser])
+
+
   //Rol del usuario actual
   const setRolConcurrentUser = (rol) => {
     setRolUser(rol);
@@ -54,14 +62,10 @@ export const ContextProvider = ({ children }) => {
   }
 
   //Usuario Auntenticado FrontEnd
-  const handleAuth = () => {
-    if (authUser === true) {
-      setAuthUser(false);
-      localStorage.setItem('authUser', false);
-    } else {
-      setAuthUser(true);
-      localStorage.setItem('authUser', true);
-    }
+  const handleAuth = (prop) => {
+    console.log(prop);
+    setAuthUser(prop);
+    localStorage.setItem('authUser', prop);
   };
 
   //Cerrar Sesion
@@ -73,13 +77,14 @@ export const ContextProvider = ({ children }) => {
 
         if (res.success !== false) {
           setRolConcurrentUser('');
-          handleAuth();
-          setRolUser('rol');
+          setAuthUser(false);
+          // handleAuth();
+          // setRolUser('rol');
         }
       },
       resError: (err) => {
         setRolConcurrentUser('');
-        handleAuth();
+        // handleAuth();
         console.log(err);
       }
     })
