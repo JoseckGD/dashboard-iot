@@ -135,6 +135,10 @@ export const ContextProvider = ({ children }) => {
     alert('click Eliminar')
   }
 
+
+
+
+
   // crear un Usuario
   const createUser = (data) => {
     // const dataF = {
@@ -201,6 +205,28 @@ export const ContextProvider = ({ children }) => {
 
   };
 
+  //Eliminar Usuario
+  const deleteData = (data) => {
+
+    let endpoint = `http://localhost:5051/deleteuser/${data.id}`;
+
+    let options = {
+      url: endpoint,
+      settings: {
+        method: "DELETE",
+      },
+      resSuccess: (json => {
+        console.log(json)
+      }),
+      resError: (err => {
+        console.log("Huvo un Error al Eliminar el Usuario", err)
+      }),
+
+    };
+
+    fetchAJAX(options)
+  }
+
 
   const data = {
     currentMode,
@@ -224,6 +250,7 @@ export const ContextProvider = ({ children }) => {
     loading,
     Eliminar,
     updateData,
+    deleteData,
     setDataToEdit,
     dataToEdit,
     createUser

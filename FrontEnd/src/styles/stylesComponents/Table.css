@@ -1,15 +1,44 @@
 .tabla {
-   width: calc(100% - 2em);
-   background-color: rgba(161, 161, 161, 0.678);
-   backdrop-filter: blur(20px);
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   padding: 1em;
-   margin-top: 1em;
+  width: calc(100% - 2em);
+  background-color: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  margin-top: 1em;
+}
+
+.tabla caption {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .tabla table {
-   background-color: aliceblue;
-   width: 100%;
+  background-color: aliceblue;
+  width: 100%;
+  height: auto;
+  overflow-x: hidden !important;
+
+  border-collapse: collapse;
+}
+
+table tbody td {
+  text-align: center;
+}
+
+table thead {
+  height: 2.5rem;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: cornflowerblue;
+}
+
+table .td-modificar button {
+  margin: auto;
+}
+
+table .td-eliminar button {
+  margin: 0.4rem auto;
 }

@@ -23,7 +23,7 @@ export const UsuariosPage = () => {
   }
 
   //Auth - LogIn 
-  const { authUser } = useStateContext();
+  const { authUser, deleteData, dbUser: data } = useStateContext();
   //=======================
 
   // console.log(active);
@@ -33,6 +33,10 @@ export const UsuariosPage = () => {
     setIsAddUser(false);
     setActive(false);
     setActive(true);
+  }
+
+  const handleDelete = (id) => {
+    deleteData({ id })
   }
 
 
@@ -46,7 +50,12 @@ export const UsuariosPage = () => {
             <Header />
             <h1>Usuarios</h1>
             <Button text='Agregar un Usuario' icon={homepage} bgColor={'#33b5e5'} evento={handleAddUser} />
-            <Table title='usuarios' eventoModify={handleModify} />
+            <Table
+              title='usuarios'
+              eventoModify={handleModify}
+              eventoDelete={handleDelete}
+              data={data}
+            />
             {active &&
               <>
                 <Formulario
