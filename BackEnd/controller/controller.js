@@ -44,11 +44,11 @@ module.exports = {
 
   insetdevice: (req, res) => {
     let data = {
-      nombre: req.body.nombre,
-      tipo: req.body.tipo,
-      estado: req.body.estado,
-      nombre_planta: req.body.nombre_planta,
-      variable_medida: req.body.variable_medida
+      id: req.body.id,
+      nombre: req.body.Nombre,
+      tipo: req.body.Tipo,
+      estado: req.body.Estado,
+      variable_medida: req.body.Dato_medida
     }
 
     _model.methods.insertDevice(data)

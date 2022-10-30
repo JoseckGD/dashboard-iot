@@ -23,10 +23,14 @@ export const ContextProvider = ({ children }) => {
   const [dataToEdit, setDataToEdit] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  let url = "http://localhost:5051/selectusers";
+  //let url = "http://localhost:5051/selectusers";
+  const [url, setUrl] = useState("")
 
   useEffect(() => {
+    if (url === "") return
+
     setLoading(true);
+
     fetchAJAX({
       url: url,
       resSuccess: (res) => {
@@ -138,7 +142,6 @@ export const ContextProvider = ({ children }) => {
 
 
 
-
   // crear un Usuario
   const createUser = (data) => {
     // const dataF = {
@@ -227,6 +230,28 @@ export const ContextProvider = ({ children }) => {
     fetchAJAX(options)
   }
 
+  //Crear Data
+  const createData = (url, data) => {
+    let options = {
+      url,
+      settings: {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      },
+      resSuccess: (json => {
+        console.log(json)
+      }),
+      resError: (err => {
+        console.log("Huvo un Error al Insertar el Registro", err)
+      }),
+
+    };
+
+    fetchAJAX(options)
+  }
 
   const data = {
     currentMode,
@@ -253,7 +278,9 @@ export const ContextProvider = ({ children }) => {
     deleteData,
     setDataToEdit,
     dataToEdit,
-    createUser
+    createUser,
+    setUrl,
+    createData
   };
 
   return (

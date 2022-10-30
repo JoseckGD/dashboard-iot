@@ -6,11 +6,31 @@ import { Sidebar } from '../components/Sidebar'
 import { useTitle } from '../hooks/useTitle';
 import { Formulario } from "../components/Formulario"
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Table } from '../components/Table';
 import { Button } from '../components/Button';
 import { useStateContext } from '../contexts/ContextProvider';
 import { Navigate } from 'react-router-dom';
+
+const initialFormModify = {
+  Nombre: "", //nombre:
+  Telefono: "", //numero_telefono:
+  Correo: "", //correo
+  Rol: "", //rol
+  id: null, //id_usuario
+};
+
+
+const initialForm = {
+  Nombre: "", //nombre:
+  Telefono: "", //numero_telefono:
+  Correo: "", //correo
+  Rol: "", //rol
+  Contraseña: "", //rcontrasna
+  Confirmar_Contraseña: "", //repeat_contrasna
+  id: null, //id_usuario
+};
+
 
 export const UsuariosPage = () => {
 
@@ -22,11 +42,17 @@ export const UsuariosPage = () => {
     setIsAddUser(true);
   }
 
+
   //Auth - LogIn 
-  const { authUser, deleteData, dbUser: data } = useStateContext();
+  const { authUser, deleteData, setUrl, dbUser: data } = useStateContext();
   //=======================
 
   // console.log(active);
+
+  useEffect(() => {
+    setUrl("http://localhost:5051/selectusers")
+  })
+
 
   const handleModify = (id) => {
     // console.log(id);
@@ -48,43 +74,48 @@ export const UsuariosPage = () => {
           <Sidebar />
           <section className='homepage'>
             <Header />
-            <h1>Usuarios</h1>
-            <Button text='Agregar un Usuario' icon={homepage} bgColor={'#33b5e5'} evento={handleAddUser} />
-            <Table
-              title='usuarios'
-              eventoModify={handleModify}
-              eventoDelete={handleDelete}
-              data={data}
-            />
-            {active &&
-              <>
-                <Formulario
-                  setActive={setActive}
-                  isAddUser={isAddUser}
-                  inputs={isAddUser ? [
-                    'Nombre:text',
-                    'Telefono:text',
-                    'Correo:text',
-                    'Rol:select:Administrador:Operador',
-                    'Contraseña:password',
-                    'Confirmar Contraseña:password',
-                  ] : [
-                    'Nombre:text',
-                    'Telefono:text',
-                    'Correo:text',
-                    'Rol:select:Administrador:Operador',
-                  ]}
-                // inputs={[
-                //   'Nombre:text',
-                //   'Telefono:text',
-                //   'Correo:text',
-                //   'Rol:select:Administrador:Operador',
-                // ]}
-                // handleSubmit={handleSubmit}
-                />
-              </>
+            <section className='section-usuarios'>
+              <h1>Usuarios</h1>
+              <Button text='Agregar un Usuario' icon={homepage} bgColor={'#33b5e5'} evento={handleAddUser} />
+              <Table
+                title='usuarios'
+                eventoModify={handleModify}
+                eventoDelete={handleDelete}
+                data={data}
+              />
+              {active &&
+                <>
+                  <Formulario
+                    setActive={setActive}
+                    initialForm={initialForm}
+                    initialFormModify={initialFormModify}
+                    isAdd={isAddUser}
+                    inputs={isAddUser ? [
+                      'Nombre:text',
+                      'Telefono:text',
+                      'Correo:text',
+                      'Rol:select:Administrador:Operador',
+                      'Contraseña:password',
+                      'Confirmar_Contraseña:password',
+                    ] : [
+                      'Nombre:text',
+                      'Telefono:text',
+                      'Correo:text',
+                      'Rol:select:Administrador:Operador',
+                    ]}
+                    to="usuarios"
+                  // inputs={[
+                  //   'Nombre:text',
+                  //   'Telefono:text',
+                  //   'Correo:text',
+                  //   'Rol:select:Administrador:Operador',
+                  // ]}
+                  // handleSubmit={handleSubmit}
+                  />
+                </>
 
-            }
+              }
+            </section>
           </section>
         </>
       )}

@@ -7,40 +7,29 @@
 import { useEffect, useState } from 'react';
 import { useStateContext } from '../contexts/ContextProvider';
 
-const initialForm = {
-  Nombre: "", //nombre:
-  Telefono: "", //numero_telefono:
-  Correo: "", //correo
-  Rol: "", //rol
-  id: null, //id_usuario
-};
 
-const initialFormAddUser = {
-  Nombre: "", //nombre:
-  Telefono: "", //numero_telefono:
-  Correo: "", //correo
-  Rol: "", //rol
-  Contrasena: "", //rcontrasna
-  RepeatContrasena: "", //repeat_contrasna
-  id: null, //id_usuario
-};
+export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormModify, to }) => {
 
-export const Formulario = ({ setActive, inputs, isAddUser }) => {
-
-  const [form, setForm] = useState(isAddUser ? initialFormAddUser : initialForm);
+  const [form, setForm] = useState(
+    initialFormModify ?
+      isAdd ? initialForm : initialFormModify
+      : initialForm
+  );
 
   const {
     createUser,
     // updateData,
     dataToEdit,
     setDataToEdit,
+    createData
   } = useStateContext();
 
   useEffect(() => {
     if (dataToEdit) {
+
       setForm(dataToEdit);
     } else {
-      setForm(initialFormAddUser);
+      setForm(initialForm);
     }
   }, [dataToEdit]);
 
@@ -58,34 +47,73 @@ export const Formulario = ({ setActive, inputs, isAddUser }) => {
   }
 
   const handleReset = (e) => {
-    setForm(initialFormAddUser);
+    setForm(initialForm);
     setDataToEdit(null);
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
 
-    if (form.id === null) {
-      // alert('create');
-      if (verifyFormData()) {
-        createUser(form);
-      }
-      // createData(form);
-      // alert(verifyFormData());
-    } else {
-      alert('update');
-      // updateData(form);
-      alert(form.id_usuario + 'a' + dataToEdit.rol);
-      handleReset();
+    switch (to) {
+      case 'usuario':
+        if (form.id === null) {
+          // alert('create');
+          if (verifyFormData()) {
+            createUser(form);
+          }
+          // createData(form);
+          // alert(verifyFormData());
+        } else {
+          alert('update');
+          // updateData(form);
+          alert(form.id_usuario + 'a' + dataToEdit.rol);
+          handleReset();
+        }
+        setActive(false);
+        break;
+
+      case 'dispositivos':
+        if (form.id === null) {
+
+          alert("Create")
+          if (verifyFormData()) {
+            form.id = "4"
+            createData('http://localhost:5051/insertdevice', form);
+          }
+
+        } else {
+
+          alert(form.id_usuario + 'a' + dataToEdit.rol);
+          handleReset();
+
+        }
+
+        setActive(false);
+        break;
     }
-    setActive(false);
+
   };
 
   const verifyFormData = () => {
-    if (!form.Nombre || !form.Telefono || !form.Correo || !form.Rol) {
-      alert("Porfavor, llene los campos");
-      return false;
+
+    switch (to) {
+
+      case 'usuarios':
+        if (!form.Nombre || !form.Telefono || !form.Correo || !form.Rol) {
+          alert("Porfavor, llene los campos");
+          return false;
+        }
+        break;
+
+      case 'dispositivos':
+        if (!form.Nombre || !form.Tipo || !form.Estado || !form.Dato_medida) {
+          alert("Porfavor, llene los campos");
+          return false;
+        }
+        break;
     }
+
     return true;
   }
 

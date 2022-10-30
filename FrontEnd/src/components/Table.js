@@ -48,9 +48,30 @@ export const Table = ({ title, eventoModify, eventoDelete, data }) => {
     //Configuraciones para la tabla Dispositivos
     case "dispositivos":
 
+      Object.prototype.rename_property = function (oldName, newName) {
+
+        if (oldName === newName) {
+          return this;
+        }
+
+        if (this.hasOwnProperty(oldName)) {
+          this[newName] = this[oldName];
+          delete this[oldName];
+        }
+        return this;
+      };
 
 
+      if (data !== null) {
 
+        for (let dispositivo of data) {
+          dispositivo.rename_property('id_dispositivo_iot', 'id');
+          dispositivo.rename_property('nombre', 'Nombre');
+          dispositivo.rename_property('tipo', 'Tipo');
+          dispositivo.rename_property('estado', 'Estado');
+          dispositivo.rename_property('dato_medida', 'Dato_medida');
+        }
+      }
 
       break;
   }
@@ -67,9 +88,9 @@ export const Table = ({ title, eventoModify, eventoDelete, data }) => {
         <tbody>
           {(data !== null) ? (
             data.map((el) => (
-              <TableRow
-                title={title}
+              < TableRow
                 key={el.id}
+                title={title}
                 el={el}
                 eventoModify={eventoModify}
                 eventoDelete={eventoDelete}

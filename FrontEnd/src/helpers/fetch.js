@@ -1,19 +1,23 @@
 export default function fetchAJAX(parametros) {
 
-    let { url, settings, resSuccess, resError } = parametros;
+  let { url, settings, resSuccess, resError } = parametros;
 
-    fetch(url, settings)
-        .then(res => { return res.ok ? res.json() : Promise.reject(res) })
-        .then(json => {
-            if (json.Success !== false) {
-                resSuccess(json)
-            } else {
-                console.error("Huvo un Error:", json.message)
-            }
-        })
-        .catch(err => {
-            resError(err)
-        })
+  const controller = new AbortController();
+  const signal = controller.signal;
 
+  setTimeout(() => controller.abort(), 1000);
+
+  fetch(url, settings)
+    .then(res => { return res.ok ? res.json() : Promise.reject(res) })
+    .then(json => {
+      if (json.success !== false) {
+        resSuccess(json)
+      } else {
+        console.error("Huvo un Error:", json.message)
+      }
+    })
+    .catch(err => {
+      resError(err)
+    })
 }
 

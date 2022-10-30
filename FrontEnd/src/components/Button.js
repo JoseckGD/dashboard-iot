@@ -1,7 +1,7 @@
 import { useStateContext } from '../contexts/ContextProvider';
 import '../styles/stylesComponents/Button.css';
 
-export const Button = ({ text, icon, bgColor, evento, eventoModify, id_data, data, title, eventoDelete }) => {
+export const Button = ({ text, icon, bgColor, evento, eventoModify, id_data, data, eventoDelete }) => {
   const {
     setDataToEdit,
     deleteData,
@@ -17,16 +17,11 @@ export const Button = ({ text, icon, bgColor, evento, eventoModify, id_data, dat
 
 
   const handleButton = (e, typeEvent) => {
-    switch (title) {
-      case "usuarios":
 
-        if (text == "Modificar") {
-          openFormModify()
-        } else if (text == "Eliminar") {
-          eventoDelete(id_data)
-        }
-
-        break;
+    if (text == "Modificar") {
+      openFormModify()
+    } else if (text == "Eliminar") {
+      eventoDelete(id_data)
     }
   }
 
