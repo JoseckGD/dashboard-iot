@@ -8,103 +8,83 @@ import { TableRow } from './TableRow';
 let indexT;
 export const Table = ({ title, eventoModify, eventoDelete, data }) => {
 
+   const { dbUser } = useStateContext();
 
-  switch (title) {
+   switch (title) {
 
-    //Configuraciones para la Tabla Usuarios
-    case "usuarios":
+      //Configuraciones para la Tabla Usuarios
+      case "usuarios":
 
-      // eslint-disable-next-line
-      Object.prototype.rename_property = function (oldName, newName) {
-        // no hacer nada si los nombre son iguales
-        if (oldName === newName) {
-          return this;
-        }
-        // Verificar si ya existe la propiedad con el nombre nuevo y evitar errores.
-        if (this.hasOwnProperty(oldName)) {
-          this[newName] = this[oldName];
-          delete this[oldName];
-        }
-        return this;
-      };
+         data = dbUser;
 
-      // lo usas así... también podrías usar map, o un for común..
-      // eso dependerá de la compatibilidad que necesites y lo
-      // "modernizado" que quieras que sea tu código.
-      if (data !== null) {
-
-        for (var usuario of data) {
-          usuario.rename_property('id_usuario', 'id');
-          usuario.rename_property('nombre', 'Nombre');
-          usuario.rename_property('numero_telefono', 'Telefono');
-          usuario.rename_property('correo', 'Correo');
-          usuario.rename_property('rol', 'Rol');
-        }
-      }
-
-      break;
+         break;
 
 
-    //Configuraciones para la tabla Dispositivos
-    case "dispositivos":
+      //Configuraciones para la tabla Dispositivos
+      case "dispositivos":
 
-      Object.prototype.rename_property = function (oldName, newName) {
+         Object.prototype.rename_property = function (oldName, newName) {
 
-        if (oldName === newName) {
-          return this;
-        }
+            if (oldName === newName) {
+               return this;
+            }
 
-        if (this.hasOwnProperty(oldName)) {
-          this[newName] = this[oldName];
-          delete this[oldName];
-        }
-        return this;
-      };
+            if (this.hasOwnProperty(oldName)) {
+               this[newName] = this[oldName];
+               delete this[oldName];
+            }
+            return this;
+         };
 
 
-      if (data !== null) {
+         if (data !== null) {
 
-        for (let dispositivo of data) {
-          dispositivo.rename_property('id_dispositivo_iot', 'id');
-          dispositivo.rename_property('nombre', 'Nombre');
-          dispositivo.rename_property('tipo', 'Tipo');
-          dispositivo.rename_property('estado', 'Estado');
-          dispositivo.rename_property('dato_medida', 'Dato_medida');
-        }
-      }
+            for (let dispositivo of data) {
+               dispositivo.rename_property('id_dispositivo_iot', 'id');
+               dispositivo.rename_property('nombre', 'Nombre');
+               dispositivo.rename_property('tipo', 'Tipo');
+               dispositivo.rename_property('estado', 'Estado');
+               dispositivo.rename_property('dato_medida', 'Dato_medida');
+            }
+         }
 
-      break;
-  }
+         break;
+      default:
+         console.log('Sin opcion');
+         break;
+   }
 
-  dataTables.map((item, index) => (
-    item.titleTable.includes(title) && (indexT = index)
-  ));
+   dataTables.map((item, index) => (
+      item.titleTable.includes(title) && (indexT = index)
+   ));
 
-  return (
-    <div className="tabla">
-      <table>
-        <caption>{dataTables[indexT].titleTable}</caption>
-        <TableHead indexTable={indexT} />
-        <tbody>
-          {(data !== null) ? (
-            data.map((el) => (
-              < TableRow
-                key={el.id}
-                title={title}
-                el={el}
-                eventoModify={eventoModify}
-                eventoDelete={eventoDelete}
-              />
-            ))
-          ) : (
-            <tr>
-              <td colSpan="5">
-                <Loader />
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
-  )
+   return (
+      <div className="tabla">
+         <table>
+            <caption>{dataTables[indexT].titleTable}</caption>
+            <TableHead indexTable={indexT} />
+            <tbody>
+               {data && (
+                  (data !== null) ? (
+                     data.map((el) => (
+                        < TableRow
+                           key={title === 'usuarios' ? el.id_usuario : el.id}
+                           title={title}
+                           el={el}
+                           eventoModify={eventoModify}
+                           eventoDelete={eventoDelete}
+                        />
+                     ))
+                  ) : (
+                     <tr>
+                        <td colSpan="5">
+                           <Loader />
+                        </td>
+                     </tr>
+                  ))}
+            </tbody>
+         </table>
+      </div>
+   )
+
 }

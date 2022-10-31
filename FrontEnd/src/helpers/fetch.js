@@ -3,7 +3,7 @@ export default function fetchAJAX(parametros) {
   let { url, settings, resSuccess, resError } = parametros;
 
   const controller = new AbortController();
-  const signal = controller.signal;
+  // const signal = controller.signal;
 
   setTimeout(() => controller.abort(), 1000);
 

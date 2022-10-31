@@ -34,7 +34,8 @@ module.exports = {
 
     insertUser: function (data) {
       return new Promise((resolve, reject) => {
-        con.query(`INSERT INTO usuario (id_usuario, nombre, numero_telefono, contrasena, correo, rol) VALUES (${parseInt(data.id_usuario)}, '${data.nombre}', '${data.numero_telefono}', '${data.contrasena}', '${data.correo}', '${data.rol}')`, (err, rows) => {
+        // con.query(`INSERT INTO usuario (id_usuario, nombre, numero_telefono, contrasena, correo, rol) VALUES (${parseInt(data.id_usuario)}, '${data.nombre}', '${data.numero_telefono}', '${data.contrasena}', '${data.correo}', '${data.rol}')`, (err, rows) => {
+        con.query(`INSERT INTO usuario (nombre, numero_telefono, contrasena, correo, rol) VALUES ( '${data.nombre}', '${data.numero_telefono}', '${data.contrasena}', '${data.correo}', '${data.rol}')`, (err, rows) => {
           callback(err, rows, resolve, reject)
         })
       })

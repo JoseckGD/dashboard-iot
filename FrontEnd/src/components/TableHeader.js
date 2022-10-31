@@ -7,6 +7,7 @@ export const TableHeader = ({ indexTable }) => {
             // console.log(item.name)
             <th key={index}>{item.name}</th>
          )}
+         <th colSpan={2}>Acciones</th>
       </>
    )
 }

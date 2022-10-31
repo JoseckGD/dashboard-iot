@@ -56,11 +56,12 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
     e.preventDefault();
 
     switch (to) {
-      case 'usuario':
+      case 'usuarios':
         if (form.id === null) {
           // alert('create');
           if (verifyFormData()) {
             createUser(form);
+            setActive(false);
           }
           // createData(form);
           // alert(verifyFormData());
@@ -69,8 +70,8 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
           // updateData(form);
           alert(form.id_usuario + 'a' + dataToEdit.rol);
           handleReset();
+          setActive(false);
         }
-        setActive(false);
         break;
 
       case 'dispositivos':
@@ -90,6 +91,9 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
         }
 
         setActive(false);
+        break;
+      default:
+        console.log('Sin opcion');
         break;
     }
 
@@ -111,6 +115,9 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
           alert("Porfavor, llene los campos");
           return false;
         }
+        break;
+      default:
+        console.log('Sin opcion');
         break;
     }
 

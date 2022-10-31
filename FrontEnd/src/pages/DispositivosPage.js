@@ -30,7 +30,7 @@ export const DispositivosPage = () => {
   const [isAddDispositivo, setIsAddDispositivo] = useState(false);
 
   //Auth - LogIn 
-  const { authUser, deleteData, setUrl, dbUser: data } = useStateContext();
+  const { authUser, setUrl, dbUser: data } = useStateContext();
   //=======================
 
   useEffect(() => {

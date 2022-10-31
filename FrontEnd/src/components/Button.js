@@ -4,7 +4,7 @@ import '../styles/stylesComponents/Button.css';
 export const Button = ({ text, icon, bgColor, evento, eventoModify, id_data, data, eventoDelete }) => {
   const {
     setDataToEdit,
-    deleteData,
+    // deleteData,
     // updateData,
     // dataToEdit,
   } = useStateContext();
@@ -18,9 +18,9 @@ export const Button = ({ text, icon, bgColor, evento, eventoModify, id_data, dat
 
   const handleButton = (e, typeEvent) => {
 
-    if (text == "Modificar") {
+    if (text === "Modificar") {
       openFormModify()
-    } else if (text == "Eliminar") {
+    } else if (text === "Eliminar") {
       eventoDelete(id_data)
     }
   }

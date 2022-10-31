@@ -51,6 +51,29 @@ export const ContextProvider = ({ children }) => {
 
   }, [url]);
 
+  //Obtener usuarios
+  const getUser = () => {
+    setLoading(true);
+    fetchAJAX({
+      url: url,
+      resSuccess: (res) => {
+
+        if (res.success === true) {
+          setDbUser(res.result);
+          setError(null);
+        } else {
+          setDbUser(null);
+          setError(res.message);
+        }
+        setLoading(false);
+      },
+      resError: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
+  //autenticacion de usuario
   useEffect(() => {
     const isAuthUser = window.localStorage.getItem('authUser');
     if (isAuthUser) {
@@ -144,47 +167,37 @@ export const ContextProvider = ({ children }) => {
 
   // crear un Usuario
   const createUser = (data) => {
-    // const dataF = {
-    //   id_usuario: data.id,
-    //   nombre: data.Nombre,
-    //   numero_telefono: data.Telefono,
-    //   correo: data.Correo,
-    //   rol: data.Rol
-    // }
-    // console.log(dataF);
-    // alert(data);
+    const newUser = {
+      id_usuario: data.id,
+      nombre: data.Nombre,
+      numero_telefono: data.Telefono,
+      correo: data.Correo,
+      rol: data.Rol,
+      contrasena: data.Contrasena,
+    };
+    // console.log(newUser);
+    fetchAJAX({
+      url: 'http://localhost:5051/insertuser',
+      settings: {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+      },
+      resSuccess: (res) => {
+        if (res.success) {
+          getUser();
+          window.alert(res.message);
+        } else {
+          window.alert(res.message);
+        }
 
-    // fetchAJAX({
-    //   url: 'http://localhost:5051/insertuser',
-    //   resSuccess: (res) => {
-
-    //     if (res.success === true) {
-    //       setDbUser(res.result);
-    //       setError(null);
-    //     } else {
-    //       setDbUser(null);
-    //       setError(res.message);
-    //     }
-    //     setLoading(false);
-    //   },
-    //   resError: (err) => {
-    //     console.log(err);
-    //   }
-    // })
-    // data.id = Date.now();
-    // let options = {
-    //   body: data,
-    //   headers: { "content-type": "application/json" }
-    // };
-    // api.post(url, options).then((res) => {
-    //   //console.log(res);
-    //   if (!res.err) {
-    //     setDb([...db, res]);
-    //   } else {
-    //     setError(res);
-    //   }
-    // });
-    // setDb([...db, data]);
+      },
+      resError: (error) => {
+        console.log(error);
+      }
+    })
   };
 
   // actualizar data de usuario
