@@ -30,10 +30,10 @@ export const DispositivosPage = () => {
   const [isAddDispositivo, setIsAddDispositivo] = useState(false);
 
   //Auth - LogIn 
-  const { authUser, setUrl, dbUser: data } = useStateContext();
+  const { authUser, setUrl, dbUser: data, deleteDevice } = useStateContext();
   //=======================
-
   useEffect(() => {
+    // setUrl("https://dashboard--test.herokuapp.com/selectdevices");
     setUrl("http://localhost:5051/selectdevices");
   })
 
@@ -46,6 +46,11 @@ export const DispositivosPage = () => {
     setIsAddDispositivo(false);
     setActive(false);
     setActive(true);
+  }
+
+  const handleDelete = (id) => {
+    window.confirm(`¿Seguro que deseas eliminar el dispositivo ${id} ?`) &&
+      deleteDevice({ id });
   }
 
   return (
@@ -68,6 +73,7 @@ export const DispositivosPage = () => {
               <Table
                 title='dispositivos'
                 eventoModify={handleModify}
+                eventoDelete={handleDelete}
                 data={data}
               />
               {active &&

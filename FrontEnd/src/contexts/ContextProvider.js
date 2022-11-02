@@ -222,6 +222,30 @@ export const ContextProvider = ({ children }) => {
 
   };
 
+  //Eliminar Dispositivo
+  const deleteDevice = (data) => {
+
+    let endpoint = `http://localhost:5051/deletedevice/${data.id}`;
+
+    let options = {
+      url: endpoint,
+      settings: {
+        method: "DELETE",
+      },
+      resSuccess: (json => {
+        json.success === true ?
+          getData() :
+          console.log(json);
+      }),
+      resError: (err => {
+        console.log("Huvo un Error al Eliminar el Dispositivo", err)
+      }),
+
+    };
+
+    fetchAJAX(options)
+  }
+
   //Eliminar Usuario
   const deleteData = (data) => {
 
@@ -296,7 +320,8 @@ export const ContextProvider = ({ children }) => {
     dataToEdit,
     createUser,
     setUrl,
-    createData
+    createData,
+    deleteDevice
   };
 
   return (

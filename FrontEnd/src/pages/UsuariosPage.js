@@ -63,7 +63,8 @@ export const UsuariosPage = () => {
   }
 
   const handleDelete = (id) => {
-    deleteData({ id })
+    window.confirm(`¿Seguro que deseas eliminar el usuario ${id} ?`) &&
+      deleteData({ id });
   }
 
 

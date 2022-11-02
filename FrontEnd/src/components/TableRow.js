@@ -1,9 +1,14 @@
-import React from 'react'
 import { Button } from './Button';
 import homepage from '../img/homepage.png';
 import { TableD } from './TableD';
-
+let id = '';
 export const TableRow = ({ title, el, eventoModify, eventoDelete }) => {
+
+   // const [id, setId] = useState(null);
+
+   title === 'dispositivos' && (id = el.id_dispositivo_iot);
+   title === 'usuarios' && (id = el.id_usuario);
+   // title === 'usuarios' && setId(el.id);
 
    return (
       <tr key={Math.random()}>
@@ -11,30 +16,30 @@ export const TableRow = ({ title, el, eventoModify, eventoDelete }) => {
          {Object.values(el).map((campo, index) => (
 
             (typeof campo === 'boolean')
-               ? <TableD key={`${el.id}_${campo}_${index}`} elemento={campo.toString()} />
-               : <TableD key={`${el.id}_${campo}_${index}`} elemento={campo} />
+               ? <TableD key={`${id}_${campo}_${index}`} elemento={campo.toString()} />
+               : <TableD key={`${id}_${campo}_${index}`} elemento={campo} />
 
          ))}
 
-         <td className='td-modificar' data-id={el.id}>
+         <td className='td-modificar' data-id={id}>
             <Button
-               key={`${el.id}_modificar`}
+               key={`${id}_modificar`}
                evento={true}
                eventoModify={eventoModify}
                data={el}
-               id_data={el.id}
+               id_data={id}
                text='Modificar' icon={homepage}
                bgColor={'#00C851'}
             />
          </td>
 
-         <td className='td-eliminar' data-id={el.id}>
+         <td className='td-eliminar' data-id={id}>
             <Button
-               key={`${el.id}_eliminar`}
+               key={`${id}_eliminar`}
                evento={true}
                eventoDelete={eventoDelete}
                text='Eliminar'
-               id_data={el.id}
+               id_data={id}
                icon={homepage}
                bgColor={'#ff4444'}
             />
