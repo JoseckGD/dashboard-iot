@@ -34,7 +34,7 @@ export const DispositivosPage = () => {
   //=======================
 
   useEffect(() => {
-    setUrl("http://localhost:5051/selectdevices")
+    setUrl("http://localhost:5051/selectdevices");
   })
 
   const handleAddUser = () => {
@@ -50,7 +50,7 @@ export const DispositivosPage = () => {
 
   return (
     <>
-      {authUser === false ? <Navigate to='/tipo-usuario' /> : (
+      {authUser === 'false' ? <Navigate to='/tipo-usuario' /> : (
         <>
           <Sidebar />
           <section className='homepage'>
@@ -102,5 +102,3 @@ export const DispositivosPage = () => {
     </>
   )
 }
-
-

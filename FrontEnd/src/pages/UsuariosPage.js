@@ -50,7 +50,8 @@ export const UsuariosPage = () => {
   // console.log(active);
 
   useEffect(() => {
-    setUrl("http://localhost:5051/selectusers")
+    setUrl("http://localhost:5051/selectusers");
+    // setUrl("https://dashboard--test.herokuapp.com/selectusers");
   })
 
 

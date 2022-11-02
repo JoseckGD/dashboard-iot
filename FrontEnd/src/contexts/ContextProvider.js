@@ -51,8 +51,8 @@ export const ContextProvider = ({ children }) => {
 
   }, [url]);
 
-  //Obtener usuarios
-  const getUser = () => {
+  //Obtener datos 
+  const getData = () => {
     setLoading(true);
     fetchAJAX({
       url: url,
@@ -187,7 +187,8 @@ export const ContextProvider = ({ children }) => {
       },
       resSuccess: (res) => {
         if (res.success) {
-          getUser();
+          setUrl('http://localhost:5051/selectusers');
+          getData();
           window.alert(res.message);
         } else {
           window.alert(res.message);
@@ -256,6 +257,8 @@ export const ContextProvider = ({ children }) => {
       },
       resSuccess: (json => {
         console.log(json)
+        setUrl('http://localhost:5051/selectdevices');
+        getData();
       }),
       resError: (err => {
         console.log("Huvo un Error al Insertar el Registro", err)

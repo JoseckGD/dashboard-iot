@@ -31,6 +31,7 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
     } else {
       setForm(initialForm);
     }
+    // eslint-disable-next-line
   }, [dataToEdit]);
 
   const handleChange = (e) => {
@@ -79,7 +80,7 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
 
           alert("Create")
           if (verifyFormData()) {
-            form.id = "4"
+            form.id = "5"
             createData('http://localhost:5051/insertdevice', form);
           }
 

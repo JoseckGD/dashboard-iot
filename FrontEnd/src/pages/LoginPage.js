@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import fetchAJAX from '../helpers/fetch';
 import Message from '../components/loader message/Message';
+import Loader from '../components/loader message/Loader';
 
 
 const initialForm = {
@@ -17,6 +18,7 @@ export const LoginPage = ({ rol }) => {
 
   const [form, setForm] = useState(initialForm);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [messageError, setMessageError] = useState('');
   let pages = useNavigate();
 
@@ -25,7 +27,6 @@ export const LoginPage = ({ rol }) => {
   useTitle('Dashboard IoT | Login ' + rol);
 
   //Auth - LogIn   PENDIENTE
-
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -55,7 +56,8 @@ export const LoginPage = ({ rol }) => {
           body: JSON.stringify(form)
         },
         resSuccess: (res) => {
-          console.log('prueba', res);
+          // console.log('prueba', res);
+          setLoading(true);
 
           if (res.success) {
             setRolConcurrentUser(rol);
@@ -63,6 +65,7 @@ export const LoginPage = ({ rol }) => {
             window.localStorage.setItem('authUser', true);
             setError(false);
             setMessageError('');
+            setLoading(false);
             pages('/');
           } else {
             handleAuth(false);
@@ -97,6 +100,7 @@ export const LoginPage = ({ rol }) => {
       {authUser === 'true' ? <Navigate to='/' /> : (
         <>
           {error && <Message msg={messageError} bgColor={'#DC4C64'} />}
+          {loading && <Loader />}
           <div className='Login'>
             <div className="seccion">
               <div className="card glass" style={{

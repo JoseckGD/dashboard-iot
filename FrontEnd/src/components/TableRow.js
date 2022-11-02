@@ -8,11 +8,11 @@ export const TableRow = ({ title, el, eventoModify, eventoDelete }) => {
    return (
       <tr key={Math.random()}>
 
-         {Object.values(el).map((campo) => (
+         {Object.values(el).map((campo, index) => (
 
             (typeof campo === 'boolean')
-               ? <TableD key={`${el.id}_${campo}`} elemento={campo.toString()} />
-               : <TableD key={`${el.id}_${campo}`} elemento={campo} />
+               ? <TableD key={`${el.id}_${campo}_${index}`} elemento={campo.toString()} />
+               : <TableD key={`${el.id}_${campo}_${index}`} elemento={campo} />
 
          ))}
 
