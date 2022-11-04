@@ -34,7 +34,7 @@ module.exports = {
     },
     updateDevice: function (data) {
       return new Promise((resolve, reject) => {
-        con.query(`UPDATE dispositivo_iot SET nombre = '${data.nombre}', tipo = '${data.tipo}', dato_medida = '${data.variable_medida}' WHERE id_dispositivo_iot = '${data.id_usuario}'`, (err, rows) => {
+        con.query(`UPDATE dispositivo_iot SET nombre = '${data.nombre}', tipo = '${data.tipo}', dato_medida = '${data.variable_medida}' WHERE id_dispositivo_iot = '${parseInt(data.id)}'`, (err, rows) => {
           callback(err, rows, resolve, reject)
         });
       });

@@ -21,7 +21,8 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
     // updateData,
     dataToEdit,
     setDataToEdit,
-    createData
+    createData,
+    updateDevice
   } = useStateContext();
 
   useEffect(() => {
@@ -35,6 +36,7 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
   }, [dataToEdit]);
 
   const handleChange = (e) => {
+    console.log(e.target.value)
     setForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -86,9 +88,10 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
 
         } else {
 
-          alert(form.id_usuario + 'a' + dataToEdit.rol);
+          // alert(form.id_usuario + 'a' + dataToEdit.rol);
+          alert("Modificar dispositivos")
+          updateDevice(`http://localhost:5051/updatedevice/${5}`, form);
           handleReset();
-
         }
 
         setActive(false);

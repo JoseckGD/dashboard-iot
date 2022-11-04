@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS public.iot_proceso
 
 CREATE TABLE IF NOT EXISTS public.usuario
 (
-    id_usuario integer NOT NULL DEFAULT nextval('usuario_id_usuario_seq'::regclass),
+    id_usuario integer NOT NULL,
     nombre character varying(100) COLLATE pg_catalog."default",
     numero_telefono character varying(15) COLLATE pg_catalog."default",
     contrasena character varying(100) COLLATE pg_catalog."default",

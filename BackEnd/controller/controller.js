@@ -70,11 +70,10 @@ module.exports = {
     console.log(req.params.id)
     let data = {
       id: req.params.id,
-      nombre: req.body.nombre,
-      tipo: req.body.tipo,
-      estado: req.body.estado,
-      nombre_planta: req.body.nombre_planta,
-      variable_medida: req.body.variable_medida
+      nombre: req.body.Nombre,
+      tipo: req.body.Tipo,
+      estado: req.body.Estado,
+      variable_medida: req.body.Dato_medida
     }
 
     _model.methods.updateDevice(data)

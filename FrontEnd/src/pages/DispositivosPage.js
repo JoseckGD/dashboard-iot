@@ -30,7 +30,7 @@ export const DispositivosPage = () => {
   const [isAddDispositivo, setIsAddDispositivo] = useState(false);
 
   //Auth - LogIn 
-  const { authUser, setUrl, dbUser: data, deleteDevice } = useStateContext();
+  const { authUser, setUrl, dbUser: data, deleteDevice, updateDevice} = useStateContext();
   //=======================
   useEffect(() => {
     // setUrl("https://dashboard--test.herokuapp.com/selectdevices");

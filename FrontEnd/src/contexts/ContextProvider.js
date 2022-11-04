@@ -268,6 +268,7 @@ export const ContextProvider = ({ children }) => {
     fetchAJAX(options)
   }
 
+
   //Crear Data
   const createData = (url, data) => {
     let options = {
@@ -292,6 +293,37 @@ export const ContextProvider = ({ children }) => {
 
     fetchAJAX(options)
   }
+
+
+
+  //Actualizar dispositivo
+  const updateDevice = (url, data) => {
+    let options = {
+      url,
+      settings: {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      },
+      resSuccess: (json => {
+        console.log(json)
+        //Actualizar la tabla de dispositivos en tiempo real
+        setUrl('http://localhost:5051/selectdevices');
+        getData();
+      }),
+      resError: (err => {
+        console.log("Huvo un Error al Actualizar el registro", err)
+      }),
+
+    };
+
+    fetchAJAX(options)
+  }
+
+
+
 
   const data = {
     currentMode,
@@ -321,7 +353,8 @@ export const ContextProvider = ({ children }) => {
     createUser,
     setUrl,
     createData,
-    deleteDevice
+    deleteDevice,
+    updateDevice
   };
 
   return (
