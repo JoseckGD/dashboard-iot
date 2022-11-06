@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const routes = require('./config/routes.js');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const mqtt = require('./MQTT/broker')
 
 const port = 5051
 

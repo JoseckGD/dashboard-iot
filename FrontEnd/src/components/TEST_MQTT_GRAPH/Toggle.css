@@ -1,0 +1,41 @@
+.togle-led {
+  margin: 1rem;
+}
+
+.togle-led .toggle {
+  content: '';
+  border-radius: 5em;
+  height: 1em auto;
+  width: 4em;
+  padding: 0.2em;
+  background-color: #282c34;
+
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  background-color: #282c34;
+  justify-content: flex-start;
+  box-shadow: 0 0 15px 1px #282c3480;
+  transition: all 0.3s ease;
+}
+
+.toggle.is-active {
+  background-color: #717171;
+  justify-content: flex-end;
+  transition: all 0.3s ease;
+}
+
+.toggle .circulo {
+  content: '';
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 5em;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.circulo:hover {
+  transform: scale(0.95);
+}
