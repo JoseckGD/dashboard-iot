@@ -33,6 +33,7 @@ export const DispositivosPage = () => {
   const { authUser, setUrl, dbUser: data, deleteDevice, updateDevice } = useStateContext();
   //=======================
   useEffect(() => {
+
     // setUrl("https://dashboard--test.herokuapp.com/selectdevices");
     setUrl("http://localhost:5051/selectdevices");
   })
@@ -88,10 +89,10 @@ export const DispositivosPage = () => {
                       'Dato_medida:text',
                     ] :
                       [
-                        'Nombre:text',
-                        'Tipo:text',
-                        'Estado:select:True:False',
-                        'Dato_medida:text',
+                        'nombre:text',
+                        'tipo:text',
+                        'estado:select:True:False',
+                        'dato_medida:text',
                       ]
                     }
                     initialForm={initialForm}

@@ -67,13 +67,12 @@ module.exports = {
   },
 
   updatedevice: (req, res) => {
-    console.log(req.params.id)
     let data = {
       id: req.params.id,
-      nombre: req.body.Nombre,
-      tipo: req.body.Tipo,
-      estado: req.body.Estado,
-      variable_medida: req.body.Dato_medida
+      nombre: req.body.nombre,
+      tipo: req.body.tipo,
+      estado: req.body.estado,
+      variable_medida: req.body.dato_medida
     }
 
     _model.methods.updateDevice(data)

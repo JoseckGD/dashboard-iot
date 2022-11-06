@@ -100,10 +100,10 @@ export const UsuariosPage = () => {
                       'Contraseña:password',
                       'Confirmar_Contraseña:password',
                     ] : [
-                      'Nombre:text',
-                      'Telefono:text',
-                      'Correo:text',
-                      'Rol:select:Administrador:Operador',
+                      'nombre:text',
+                      'numero_telefono:text',
+                      'correo:text',
+                      'rol:select:Administrador:Operador',
                     ]}
                     to="usuarios"
                   // inputs={[

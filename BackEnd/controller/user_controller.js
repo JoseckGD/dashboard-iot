@@ -47,7 +47,6 @@ module.exports = {
       id_usuario: req.params.id,
       nombre: req.body.nombre,
       numero_telefono: req.body.numero_telefono,
-      contrasena: req.body.contrasena,
       correo: req.body.correo,
       rol: req.body.rol
     }

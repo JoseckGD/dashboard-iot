@@ -35,6 +35,8 @@ export const ContextProvider = ({ children }) => {
       url: url,
       resSuccess: (res) => {
 
+        console.log(res)
+
         if (res.success === true) {
           setDbUser(res.result);
           setError(null);
@@ -323,6 +325,32 @@ export const ContextProvider = ({ children }) => {
   }
 
 
+  //Actualizar Usuario
+  const updateUser = (url, data) => {
+    let options = {
+      url,
+      settings: {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      },
+      resSuccess: (json => {
+        console.log(json)
+        //Actualizar la tabla de dispositivos en tiempo real
+        setUrl('http://localhost:5051/selectusers');
+        getData();
+      }),
+      resError: (err => {
+        console.log("Huvo un Error al Actualizar el registro", err)
+      }),
+
+    };
+
+    fetchAJAX(options)
+  }
+
 
 
   const data = {
@@ -354,7 +382,8 @@ export const ContextProvider = ({ children }) => {
     setUrl,
     createData,
     deleteDevice,
-    updateDevice
+    updateDevice,
+    updateUser
   };
 
   return (
