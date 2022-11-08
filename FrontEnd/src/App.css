@@ -15,14 +15,18 @@
 }
 
 .Light {
-  background: var(--main-gradient-r);
+  /*background: var(--main-gradient-r);*/
+
+  background: #ebebeb;
   color: #282c34;
+  min-height: inherit;
 }
 
 .Dark {
 
   background-color: #282c34;
   color: ghostwhite;
+  min-height: inherit;
 }
 
 a {

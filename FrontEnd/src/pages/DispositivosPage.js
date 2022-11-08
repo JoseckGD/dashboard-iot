@@ -69,7 +69,7 @@ export const DispositivosPage = () => {
               <Button
                 text='Agregar Dispositivo'
                 icon={homepage}
-                bgColor={'#33b5e5'}
+                bgColor={'cornflowerblue'}
                 evento={handleAddUser}
               />
               <Table

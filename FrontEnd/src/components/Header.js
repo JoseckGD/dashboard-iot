@@ -6,21 +6,15 @@ import { ToggleLightDark } from './ToggleLightDark';
 import { NavLink } from 'react-router-dom';
 
 export const Header = ({ btn }) => {
-   return (
-      <header>
-         <NavLink to="/">
-            <figure>
-               <img src={Logo} alt="Logo" />
-            </figure>
-         </NavLink>
+  return (
+    <header>
+      <NavLink to="/">
+        <figure>
+          <img src={Logo} alt="Logo" />
+        </figure>
+      </NavLink>
 
-         <ToggleLightDark />
-         {!btn &&
-            <div className="btn-header">
-               <Button text='Opcion 1' icon={homepage} bgColor={'#6495ed'} evento={false} />
-               <Button text='Opcion 2' icon={homepage} bgColor={'#EF5B5B'} evento={false} />
-            </div>
-         }
-      </header>
-   )
+      <ToggleLightDark />
+    </header>
+  )
 }

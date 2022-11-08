@@ -24,10 +24,12 @@
 }
 
 table tbody td {
+  color: var(--text-dark);
   text-align: center;
 }
 
 table thead {
+  color: var(--text-dark);
   height: 2.5rem;
 }
 

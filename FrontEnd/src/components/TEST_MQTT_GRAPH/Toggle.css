@@ -2,36 +2,37 @@
   margin: 1rem;
 }
 
-.togle-led .toggle {
+.togle-led .toggle-2 {
   content: '';
   border-radius: 5em;
   height: 1em auto;
   width: 4em;
   padding: 0.2em;
-  background-color: #282c34;
+  background-color: #717171;
 
   display: flex;
   align-items: center;
 }
 
-.toggle {
+.toggle-2 {
   background-color: #282c34;
   justify-content: flex-start;
   box-shadow: 0 0 15px 1px #282c3480;
   transition: all 0.3s ease;
 }
 
-.toggle.is-active {
-  background-color: #717171;
+.toggle-2.is-active {
+  background-color: cornflowerblue;
   justify-content: flex-end;
   transition: all 0.3s ease;
 }
 
-.toggle .circulo {
+.toggle-2 .circulo {
   content: '';
   width: 1.2em;
   height: 1.2em;
   border-radius: 5em;
+  background-color: white;
   cursor: pointer;
   z-index: 10;
 }

@@ -78,7 +78,7 @@ export const UsuariosPage = () => {
             <Header />
             <section className='section-usuarios'>
               <h1>Usuarios</h1>
-              <Button text='Agregar un Usuario' icon={homepage} bgColor={'#33b5e5'} evento={handleAddUser} />
+              <Button text='Agregar un Usuario' icon={homepage} bgColor={'cornflowerblue'} evento={handleAddUser} />
               <Table
                 title='usuarios'
                 eventoModify={handleModify}

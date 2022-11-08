@@ -6,8 +6,8 @@
   padding: 0.5em 0.5em;
   height: 100%;
   position: fixed;
-  /* background-color: var(--main-bg); */
-  background: var(--main-gradient);
+  background-color: var(--main-bg);
+  /* background: var(--main-gradient);*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -39,8 +39,7 @@
   border-radius: 100em;
   background-color: ghostwhite;
   cursor: pointer;
-  box-shadow: 0px 5px 20px 1px #282c34;
-
+  box-shadow: 2px 4px 10px #282c3480;
 }
 
 .Sidebar .category {
@@ -135,7 +134,7 @@
   width: 100%;
   border-radius: 10em;
   background-color: #282c34;
-  box-shadow: 0px 5px 20px 1px #282c34;
+  box-shadow: 2px 4px 10px #282c3480;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,7 +161,7 @@
 .category.Dashboard .btn.btn-primary {
   cursor: pointer;
   border-radius: 1em;
-  box-shadow: 0px 5px 20px 1px #282c3480;
+  box-shadow: 2px 4px 10px #282c3480;
 }
 
 .category.Dashboard .btn:hover .btn:not(.tooltiptext) {

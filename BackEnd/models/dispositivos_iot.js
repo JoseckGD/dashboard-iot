@@ -27,7 +27,7 @@ module.exports = {
     },
     insertDevice: function (data) {
       return new Promise((resolve, reject) => {
-        con.query(`INSERT INTO dispositivo_iot (id_dispositivo_iot, nombre, tipo, estado, dato_medida) VALUES (${parseInt(data.id)}, '${data.nombre}', '${data.tipo}', ${JSON.parse(data.estado.toLowerCase())}, '${data.variable_medida}')`, (err, rows) => {
+        con.query(`INSERT INTO dispositivo_iot (id_dispositivo_iot, nombre, tipo, estado, dato_medida) VALUES (default, '${data.nombre}', '${data.tipo}', ${JSON.parse(data.estado.toLowerCase())}, '${data.variable_medida}')`, (err, rows) => {
           callback(err, rows, resolve, reject)
         })
       })

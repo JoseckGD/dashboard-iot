@@ -37,7 +37,7 @@ export const HomePage = () => {
             <br />
             <p><strong>Prototipo 1.- ESP8266 Potenciometro</strong></p>
             <br />
-            <Graph device='Potenciometro' />
+            <Graph device='potenciometro' />
 
             <br />
             <p><strong>Encender / Apagar Led</strong></p>
