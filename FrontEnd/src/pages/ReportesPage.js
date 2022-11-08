@@ -9,7 +9,7 @@ export const ReportesPage = () => {
    useTitle('Dashboard IoT | Reportes');
 
    //Auth - LogIn 
-   const { authUser } = useStateContext();
+   const { authUser, } = useStateContext();
    //=======================
    return (
       <>

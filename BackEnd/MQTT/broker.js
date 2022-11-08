@@ -18,7 +18,8 @@ mqtt.on('clientConnected', (client) => {
 })
 
 mqtt.on('published', (package, client) => {
-  console.log(package.payload.toString())
+  // console.log(package.payload.toString())
+  package.payload.toString()
 })
 
 mqtt.on('ready', () => {

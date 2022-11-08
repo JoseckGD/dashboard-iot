@@ -1,28 +1,35 @@
 import { useEffect, useState } from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Label, Text } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Label } from 'recharts';
 import { CustomTooltip } from './CustomTooltip'
 
-let mqtt = require('mqtt/dist/mqtt')
-let client = mqtt.connect('ws://192.168.1.75:8082/mqtt')
+const mqtt = require('mqtt/dist/mqtt')
+const client = mqtt.connect('ws://192.168.0.95:8082/mqtt', { clientId: `Fronted/Iot`, clean: false })
 
-export const GraphPotenciometro = () => {
+export const Graph = ({ device }) => {
 
   const [value, setValue] = useState([]);
+  const [deviceIsConnected, setDeviceIsConnected] = useState(false);
 
-  useEffect(() => {
+  if (!deviceIsConnected) {
 
     client.on('connect', () => {
-      console.log("FrontEnd Conectado al Broker MQTT")
-      client.subscribe('device/temp')
+      setDeviceIsConnected(true);
+      console.log("FrontEnd Conectado al Broker MQTT");
+      // console.log(`device/${device}`)
+      client.subscribe(`device/${device}`);
     })
+  }
+  useEffect(() => {
+
 
     client.on('message', (topic, message) => {
-      console.log("Datos del ESP8266", message.toString())
+      if (topic === `device/${device}`) {
+        // console.log("Datos del ESP8266", message.toString())
+        let date = `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`
+        let hour = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
 
-      let date = `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`
-      let hour = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
-
-      setValue([...value, { name: date, uv: (message.toString()).split('#')[1], pv: 2400, amt: 10, hour: hour }])
+        setValue([...value, { name: date, uv: (message.toString()).split('#')[1], pv: 2400, amt: 10, hour: hour }])
+      }
     })
 
   })
@@ -52,7 +59,7 @@ export const GraphPotenciometro = () => {
 
         <YAxis>
           <Label
-            value="Valor Potenciometro"
+            value={`Valor  ${device}`}
             offset={0}
             angle={-90}
             position="left"

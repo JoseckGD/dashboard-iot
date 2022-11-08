@@ -21,10 +21,9 @@ export const Sidebar = () => {
          <div className='icon-menu' onClick={handleCloseSideBar}>
             {activeMenu ?
                (
-                  <img src={menu} alt='menu' />
-               ) : (
                   <img src={close} alt='menu' />
-
+               ) : (
+                  <img src={menu} alt='menu' />
                )}
          </div>
          {

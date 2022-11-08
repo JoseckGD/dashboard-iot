@@ -56,7 +56,7 @@ export const LoginPage = ({ rol }) => {
           body: JSON.stringify(form)
         },
         resSuccess: (res) => {
-          // console.log('prueba', res);
+          console.log('prueba ', res);
           setLoading(true);
 
           if (res.success) {
@@ -76,9 +76,10 @@ export const LoginPage = ({ rol }) => {
 
         },
         resError: (error) => {
-          console.log(error);
+          console.log('a');
           setError(true);
           setMessageError(error);
+          // console.log('a', error);
           setTimeout(() => {
             setError(false);
           }, 10000);
