@@ -163,5 +163,29 @@ module.exports = {
           result: err
         })
       })
+  },
+
+  selectDataWithDate: (req, res) => {
+    let data = {
+      iot: req.body.iot,
+      fecha: req.body.fecha
+    }
+
+    console.log(data)
+    _model_data.methods.selectDataWithDate(data)
+      .then(rows => {
+        res.send({
+          success: true,
+          message: 'Los datos iot han sido obtenidos',
+          result: rows,
+        })
+      })
+      .catch(err => {
+        res.send({
+          success: false,
+          message: 'Error al obtener los datos iot',
+          result: err
+        })
+      })
   }
 }

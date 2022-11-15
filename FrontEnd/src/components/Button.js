@@ -2,6 +2,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 import '../styles/stylesComponents/Button.css';
 
 export const Button = ({ text, icon, bgColor, evento, eventoModify, id_data, data, eventoDelete }) => {
+
   const {
     setDataToEdit,
     // deleteData,
@@ -47,7 +48,8 @@ export const Button = ({ text, icon, bgColor, evento, eventoModify, id_data, dat
         boxShadow: `0px 5px 20px 1px ${bgColor}90`
       }}
     >
-      <img src={icon} alt={text} />
+      {icon && <img src={icon} alt={text} />}
+
       {text}
     </button >
   )
