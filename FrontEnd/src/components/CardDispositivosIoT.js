@@ -1,7 +1,4 @@
-import { Button } from './Button';
 import { CSVLink } from "react-csv";
-
-let arrayData = []
 
 const prettyLink = {
   backgroundColor: 'cornflowerblue',
@@ -14,8 +11,6 @@ const prettyLink = {
 };
 
 export default function CardDispositivosIoT({ nombrIoT, handleChange, value, dataIoTDB }) {
-
-  arrayData.push(data)
 
   return (
 
