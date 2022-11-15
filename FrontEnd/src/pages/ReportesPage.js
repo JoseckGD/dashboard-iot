@@ -12,7 +12,7 @@ export const ReportesPage = () => {
   useTitle('Dashboard IoT | Reportes');
 
   //Auth - LogIn 
-  const { authUser, setUrl, selectDevices } = useStateContext();
+  const { authUser } = useStateContext();
   const [dataIoT, SetDataIot] = useState();
   const [dataIoTDB, setDataIoTDB] = useState();
   const [dataBusqueda, setDataBusqueda] = useState({ iot: '', fecha: '' })
