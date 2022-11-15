@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Label } from 'recharts';
+import { useStateContext } from '../../contexts/ContextProvider';
 import { CustomTooltip } from './CustomTooltip'
 
 const mqtt = require('mqtt/dist/mqtt')
-const client = mqtt.connect('ws://192.168.30.84:8082/mqtt', { clientId: `Fronted/Iot ${Math.random()}`, clean: false })
+// const client = mqtt.connect('ws://192.168.30.84:8082/mqtt', { clientId: `Fronted/Iot ${Math.random()}`, clean: false })
+const client = mqtt.connect('ws://192.168.0.95:8082/mqtt', { clientId: `Fronted/Iot ${Math.random()}`, clean: false })
 
 export const Graph = ({ device }) => {
 
   const [value, setValue] = useState([]);
+  // const [dataToSend, setDataToSend] = useState([]);
   const [deviceIsConnected, setDeviceIsConnected] = useState(false);
 
+  const { insertDataIot } = useStateContext();
 
   useEffect(() => {
 
@@ -30,6 +34,15 @@ export const Graph = ({ device }) => {
         let hour = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
 
         setValue([...value, { name: date, uv: (message.toString()).split('#')[1], pv: 2400, amt: 10, hour: hour }])
+
+
+
+        insertDataIot('http://localhost:5051/insert_data', {
+          iot: device,
+          fecha: date,
+          hora: hour,
+          dato: (message.toString()).split('#')[1],
+        });
       }
     })
 

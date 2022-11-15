@@ -1,7 +1,7 @@
 import '../styles/stylesComponents/Header.css';
 import Logo from '../img/Logo.png';
-import homepage from '../img/homepage.png';
-import { Button } from './Button';
+// import homepage from '../img/homepage.png';
+// import { Button } from './Button';
 import { ToggleLightDark } from './ToggleLightDark';
 import { NavLink } from 'react-router-dom';
 

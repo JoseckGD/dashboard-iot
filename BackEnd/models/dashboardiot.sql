@@ -136,3 +136,18 @@ CREATE TABLE IF NOT EXISTS public.usuario
     CONSTRAINT usuario_pkey PRIMARY KEY (id_usuario)
 );
 END;
+
+-- BD V3.1 Nueva tabla para almacenar datos=====================================================================================================
+
+CREATE TABLE IF NOT EXISTS public.datos
+(
+    dispositivo_iot character varying COLLATE pg_catalog."default" NOT NULL,
+    hora character varying COLLATE pg_catalog."default",
+    dato character varying COLLATE pg_catalog."default",
+    fecha character varying COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.datos
+    OWNER to postgres;

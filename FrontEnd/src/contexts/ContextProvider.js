@@ -10,6 +10,8 @@ const initialAuthUser = localStorage.getItem('authUser');
 
 const initialAuthRol = localStorage.getItem('authRol');
 
+let hora = '';
+
 export const ContextProvider = ({ children }) => {
   const [currentMode, setCurrentMode] = useState(!initialMode ? 'Light' : initialMode);
   const [screenSize, setScreenSize] = useState(undefined);
@@ -351,6 +353,38 @@ export const ContextProvider = ({ children }) => {
     fetchAJAX(options)
   }
 
+  const insertDataIot = (url, data) => {
+    let options = {
+      url,
+      settings: {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      },
+      resSuccess: (json => {
+        // console.log(json)
+      }),
+      resError: (err => {
+        console.log("Huvo un Error al Insertar los datos a la BD", err)
+      }),
+
+    };
+
+    //lo ejecuta una ves cada cierto tiempo
+
+    if (hora === '') {
+      fetchAJAX(options);
+      hora = data.hora;
+      return
+    } else if (data.hora === hora) {
+      return
+    } else {
+      hora = data.hora;
+      fetchAJAX(options);
+    }
+  }
 
 
   const data = {
@@ -383,7 +417,8 @@ export const ContextProvider = ({ children }) => {
     createData,
     deleteDevice,
     updateDevice,
-    updateUser
+    updateUser,
+    insertDataIot
   };
 
   return (

@@ -1,5 +1,5 @@
 const express = require('express')
-const { selectdevices, deletedevice, insetdevice, updatedevice, selectuserauth } = require('../controller/controller.js')
+const { selectdevices, deletedevice, insetdevice, updatedevice, selectuserauth, insertdata, selectdata } = require('../controller/controller.js')
 const { selectusers, deleteuser, updateuser, insertUser } = require('../controller/user_controller.js')
 const Router = express.Router();
 const session = require('express-session');
@@ -11,6 +11,10 @@ Router.delete('/deletedevice/:id', deletedevice);
 Router.post('/insertdevice', insetdevice);
 Router.put('/updatedevice/:id', updatedevice);
 Router.post('/selectuserauth', selectuserauth);
+
+//RUTAS PARA OBTENRE E INSERTAR DATOS DE DISPOSITVOS IOT
+Router.post('/insert_data', insertdata);
+Router.post('/select_all_data/:iot', selectdata);
 
 //RUTAS DE USUARIOS
 Router.get('/selectusers', selectusers);

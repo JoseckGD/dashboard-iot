@@ -1,5 +1,6 @@
 const _model = require('../models/dispositivos_iot.js');
 const _model_auth = require('../models/auth_model.js');
+const _model_data = require('../models/data_model.js');
 
 const session = require('express-session');
 
@@ -115,6 +116,52 @@ module.exports = {
           success: false,
           message: 'Usuario o Contraseña Incorrectos'
         });
+      })
+  },
+
+  insertdata: (req, res) => {
+    // let data = {
+    //   iot: req.body.iot,
+    //   dato: req.body.dato,
+    //   fecha: req.body.fecha,
+    //   hora: req.body.hora,
+    // }
+
+    _model_data.methods.insertData(req.body)
+      .then(rows => {
+        res.send({
+          success: true,
+          message: 'Se ha insertado nuevos datos'
+        });
+      })
+      .catch(err => {
+        res.send({
+          success: false,
+          message: 'Error al insertar datos'
+        });
+      });
+  },
+
+  selectdata: (req, res) => {
+    let data = {
+      iot: req.body.iot,
+    }
+
+    console.log(data)
+    _model_data.methods.selectAllData(data)
+      .then(rows => {
+        res.send({
+          success: true,
+          message: 'Los datos iot han sido obtenidos',
+          result: rows,
+        })
+      })
+      .catch(err => {
+        res.send({
+          success: false,
+          message: 'Error al obtener los datos iot',
+          result: err
+        })
       })
   }
 }
