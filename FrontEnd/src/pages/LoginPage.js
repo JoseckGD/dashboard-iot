@@ -22,7 +22,7 @@ export const LoginPage = ({ rol }) => {
   const [messageError, setMessageError] = useState('');
   let pages = useNavigate();
 
-  const { currentMode, handleAuth, authUser, setRolConcurrentUser } = useStateContext();
+  const { currentMode, handleAuth, authUser, setRolConcurrentUser, urlBase } = useStateContext();
   //setRolConcurrentUser(rol);
   useTitle('Dashboard IoT | Login ' + rol);
 
@@ -47,7 +47,8 @@ export const LoginPage = ({ rol }) => {
     } else {
 
       fetchAJAX({
-        url: 'http://localhost:5051/selectuserauth',
+        // url: `http://localhost:5051/selectuserauth`,
+        url: `${urlBase}/selectuserauth`,
         settings: {
           method: "POST",
           headers: {

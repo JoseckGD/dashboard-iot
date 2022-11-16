@@ -23,7 +23,8 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
     setDataToEdit,
     createData,
     updateDevice,
-    updateUser
+    updateUser,
+    urlBase
   } = useStateContext();
 
   useEffect(() => {
@@ -69,7 +70,8 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
           // createData(form);
           // alert(verifyFormData());
         } else {
-          updateUser(`http://localhost:5051/updateuser/${form.id_usuario}`, form);
+          // updateUser(`http://localhost:5051/updateuser/${form.id_usuario}`, form);
+          updateUser(`${urlBase}/updateuser/${form.id_usuario}`, form);
           alert(form.id_usuario + 'a' + dataToEdit.rol);
           handleReset();
           setActive(false);
@@ -82,7 +84,8 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
           alert("Create")
           if (verifyFormData()) {
 
-            createData('http://localhost:5051/insertdevice', form);
+            // createData(`http://localhost:5051/insertdevice`, form);
+            createData(`${urlBase}/insertdevice`, form);
           }
 
         } else {
@@ -90,7 +93,8 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
           // alert(form.id_usuario + 'a' + dataToEdit.rol);
           alert("Modificar dispositivos")
           let id = form.id_dispositivo_iot
-          updateDevice(`http://localhost:5051/updatedevice/${id}`, form);
+          // updateDevice(`http://localhost:5051/updatedevice/${id}`, form);
+          updateDevice(`${urlBase}/updatedevice/${id}`, form);
           handleReset();
         }
 

@@ -12,7 +12,7 @@ export const ReportesPage = () => {
   useTitle('Dashboard IoT | Reportes');
 
   //Auth - LogIn 
-  const { authUser } = useStateContext();
+  const { authUser, urlBase } = useStateContext();
   const [dataIoT, SetDataIot] = useState();
   const [dataIoTDB, setDataIoTDB] = useState();
   const [dataBusqueda, setDataBusqueda] = useState({ iot: '', fecha: '' })
@@ -21,7 +21,8 @@ export const ReportesPage = () => {
   useEffect(() => {
 
     fetchAJAX({
-      url: 'http://localhost:5051/selectdevices',
+      // url: `http://localhost:5051/selectdevices`,
+      url: `${urlBase}/selectdevices`,
       resSuccess: (res) => {
 
         if (res.success === true) {
@@ -36,7 +37,7 @@ export const ReportesPage = () => {
       }
     })
 
-  }, [])
+  }, [urlBase])
 
   const handleChange = (e) => {
     setDataBusqueda({
@@ -54,7 +55,8 @@ export const ReportesPage = () => {
     }
 
     fetchAJAX({
-      url: 'http://localhost:5051/selectdevicewithdate',
+      // url: `http://localhost:5051/selectdevicewithdate`,
+      url: `${urlBase}/selectdevicewithdate`,
       settings,
       resSuccess: (res) => {
 

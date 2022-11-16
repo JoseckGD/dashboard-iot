@@ -44,14 +44,13 @@ export const UsuariosPage = () => {
 
 
   //Auth - LogIn 
-  const { authUser, deleteData, setUrl, dbUser: data } = useStateContext();
+  const { authUser, deleteData, setUrl, dbUser: data, urlBase } = useStateContext();
   //=======================
 
   // console.log(active);
 
   useEffect(() => {
-    setUrl("http://localhost:5051/selectusers");
-    // setUrl("https://dashboard--test.herokuapp.com/selectusers");
+    setUrl(`${urlBase}/selectusers`);
   })
 
 

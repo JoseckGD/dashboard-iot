@@ -28,6 +28,9 @@ export const ContextProvider = ({ children }) => {
   //let url = "http://localhost:5051/selectusers";
   const [url, setUrl] = useState("")
 
+  const urlBase = 'https://dashboardiotest.herokuapp.com';
+  // const urlBase = 'http://localhost:5051/';
+
   useEffect(() => {
     if (url === "") return
 
@@ -102,7 +105,8 @@ export const ContextProvider = ({ children }) => {
   //Cerrar Sesion
   const handleCloseSesion = () => {
     fetchAJAX({
-      url: `http://localhost:5051/deleteusuerauth`,
+      // url: `http://localhost:5051/deleteusuerauth`,
+      url: `${urlBase}/deleteusuerauth`,
       resSuccess: (res) => {
         console.log(res);
 
@@ -177,11 +181,12 @@ export const ContextProvider = ({ children }) => {
       numero_telefono: data.Telefono,
       correo: data.Correo,
       rol: data.Rol,
-      contrasena: data.Contrasena,
+      contrasena: data.Contraseña,
     };
     // console.log(newUser);
     fetchAJAX({
-      url: 'http://localhost:5051/insertuser',
+      // url: 'http://localhost:5051/insertuser',
+      url: `${urlBase}/insertuser`,
       settings: {
         method: "POST",
         headers: {
@@ -191,7 +196,8 @@ export const ContextProvider = ({ children }) => {
       },
       resSuccess: (res) => {
         if (res.success) {
-          setUrl('http://localhost:5051/selectusers');
+          // setUrl('http://localhost:5051/selectusers');
+          setUrl(`${urlBase}/selectusers`);
           getData();
           window.alert(res.message);
         } else {
@@ -229,7 +235,8 @@ export const ContextProvider = ({ children }) => {
   //Eliminar Dispositivo
   const deleteDevice = (data) => {
 
-    let endpoint = `http://localhost:5051/deletedevice/${data.id}`;
+    // let endpoint = `http://localhost:5051/deletedevice/${data.id}`;
+    let endpoint = `${urlBase}/deletedevice/${data.id}`;
 
     let options = {
       url: endpoint,
@@ -253,7 +260,8 @@ export const ContextProvider = ({ children }) => {
   //Eliminar Usuario
   const deleteData = (data) => {
 
-    let endpoint = `http://localhost:5051/deleteuser/${data.id}`;
+    // let endpoint = `http://localhost:5051/deleteuser/${data.id}`;
+    let endpoint = `${urlBase}/deleteuser/${data.id}`;
 
     let options = {
       url: endpoint,
@@ -286,7 +294,8 @@ export const ContextProvider = ({ children }) => {
       },
       resSuccess: (json => {
         console.log(json)
-        setUrl('http://localhost:5051/selectdevices');
+        // setUrl('http://localhost:5051/selectdevices');
+        setUrl(`${urlBase}/selectdevices`);
         getData();
       }),
       resError: (err => {
@@ -313,8 +322,9 @@ export const ContextProvider = ({ children }) => {
       },
       resSuccess: (json => {
         console.log(json)
-        //Actualizar la tabla de dispositivos en tiempo real
-        setUrl('http://localhost:5051/selectdevices');
+        //Actualizar la tabla de dispositivos en tiempo real``
+        // setUrl('http://localhost:5051/selectdevices');
+        setUrl(`${urlBase}/selectdevices`);
         getData();
       }),
       resError: (err => {
@@ -340,8 +350,9 @@ export const ContextProvider = ({ children }) => {
       },
       resSuccess: (json => {
         console.log(json)
-        //Actualizar la tabla de dispositivos en tiempo real
-        setUrl('http://localhost:5051/selectusers');
+        //Actualizar la tabla de dispositivos en tiempo real `
+        // setUrl('http://localhost:5051/selectusers');
+        setUrl(`${urlBase}/selectusers`);
         getData();
       }),
       resError: (err => {
@@ -418,7 +429,8 @@ export const ContextProvider = ({ children }) => {
     deleteDevice,
     updateDevice,
     updateUser,
-    insertDataIot
+    insertDataIot,
+    urlBase
   };
 
   return (

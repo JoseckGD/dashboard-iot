@@ -31,12 +31,12 @@ export const DispositivosPage = () => {
 
   //Auth - LogIn 
   // const { authUser, setUrl, dbUser: data, deleteDevice, updateDevice } = useStateContext();
-  const { authUser, setUrl, dbUser: data, deleteDevice } = useStateContext();
+  const { authUser, setUrl, dbUser: data, deleteDevice, urlBase } = useStateContext();
   //=======================
   useEffect(() => {
 
-    // setUrl("https://dashboard--test.herokuapp.com/selectdevices");
-    setUrl("http://localhost:5051/selectdevices");
+    // setUrl(`http://localhost:5051/selectdevices`);
+    setUrl(`${urlBase}/selectdevices`);
   })
 
   const handleAddUser = () => {
