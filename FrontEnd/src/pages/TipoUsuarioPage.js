@@ -1,6 +1,9 @@
 import { CardTipoUsuario } from '../components/CardTipoUsuario';
 import '../styles/TipoUsuarioPage.css';
-import icon from '../img/user.png';
+// import icon from '../img/user.png';
+import Gerente from '../img/gerente.png';
+import Operador from '../img/operador.png';
+import Administrador from '../img/administrador.png'
 import { Navigate, NavLink } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { useTitle } from '../hooks/useTitle';
@@ -22,15 +25,15 @@ export const TipoUsuarioPage = () => {
           <section className="tipoUsuario">
             <nav className='opciones'>
               <NavLink to='/login_Gerente'>
-                <CardTipoUsuario tipo='Gerente' icono={icon} />
+                <CardTipoUsuario tipo='Gerente' icono={Gerente} />
               </NavLink>
 
               <NavLink to='/login_Operador'>
-                <CardTipoUsuario tipo='Operador' icono={icon} />
+                <CardTipoUsuario tipo='Operador' icono={Operador} />
               </NavLink>
 
               <NavLink to='/login_Admin'>
-                <CardTipoUsuario tipo='Administrador' icono={icon} />
+                <CardTipoUsuario tipo='Administrador' icono={Administrador} />
               </NavLink>
 
             </nav>

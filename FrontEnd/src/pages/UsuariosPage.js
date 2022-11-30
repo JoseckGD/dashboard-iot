@@ -1,6 +1,6 @@
 import '../styles/HomePage.css';
 import '../styles/UsuariosPage.css';
-import homepage from '../img/homepage.png';
+import homepage from '../img/boton-mas.png';
 import { Header } from '../components/Header'
 import { Sidebar } from '../components/Sidebar'
 import { useTitle } from '../hooks/useTitle';

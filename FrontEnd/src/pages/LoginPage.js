@@ -1,5 +1,8 @@
 import '../styles/LoginPage.css';
-import logoUser from '../img/user.png';
+// import logoUser from '../img/user.png';
+import Gerente from '../img/gerente.png';
+import Operador from '../img/operador.png';
+import Administrador from '../img/administrador.png'
 import { useStateContext } from '../contexts/ContextProvider';
 import { useTitle } from '../hooks/useTitle';
 import { useState } from 'react';
@@ -110,7 +113,7 @@ export const LoginPage = ({ rol }) => {
               }}>
                 <div className="card-content">
                   <div className="imagen">
-                    <img src={logoUser} alt='logoUser' />
+                    <img src={rol==='Gerente'? Gerente : (rol==='Operador'?Operador:Administrador)} alt='logoUser' />
                   </div>
                   <div className="rol-Admin">
                     <h3>{rol}</h3>

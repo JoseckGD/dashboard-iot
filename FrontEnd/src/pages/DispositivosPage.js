@@ -10,7 +10,7 @@ import { Formulario } from "../components/Formulario"
 
 import { useEffect, useState } from 'react';
 
-import homepage from '../img/homepage.png';
+import homepage from '../img/boton-mas.png';
 import { Button } from '../components/Button';
 
 

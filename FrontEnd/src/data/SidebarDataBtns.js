@@ -1,6 +1,9 @@
 import homepage from '../img/homepage.png';
 import exit from '../img/exit.png';
 import userA from '../img/userAvatar.png'
+import dispositivo from '../img/iot.png'
+import usuarios from '../img/usuarios.png'
+import reportes from '../img/reportes.png'
 // import Logo from '../img/Logo.png';
 
 export const buttonsData = [
@@ -25,17 +28,17 @@ export const buttonsData = [
          {
             name: 'Dispositivos',
             type: 'primary',
-            icon: homepage,
+            icon: dispositivo,
          },
          {
             name: 'Usuarios',
             type: 'primary',
-            icon: homepage,
+            icon: usuarios,
          },
          {
             name: 'Reportes',
             type: 'primary',
-            icon: homepage,
+            icon: reportes,
          },
       ],
    },
