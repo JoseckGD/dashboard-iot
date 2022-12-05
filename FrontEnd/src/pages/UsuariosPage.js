@@ -11,6 +11,8 @@ import { Table } from '../components/Table';
 import { Button } from '../components/Button';
 import { useStateContext } from '../contexts/ContextProvider';
 import { Navigate } from 'react-router-dom';
+import Message from '../components/loader message/Message';
+
 
 const initialFormModify = {
   Nombre: "", //nombre:
@@ -44,7 +46,7 @@ export const UsuariosPage = () => {
 
 
   //Auth - LogIn 
-  const { authUser, deleteData, setUrl, dbUser: data } = useStateContext();
+  const { authUser, deleteData, setUrl, dbUser: data, warn, messageError, setMessageError, setWarn } = useStateContext();
   //=======================
 
   // console.log(active);
@@ -76,6 +78,13 @@ export const UsuariosPage = () => {
           <Sidebar />
           <section className='homepage'>
             <Header />
+            {warn &&
+              (messageError.includes('Error') ?
+                <Message msg={messageError} bgColor={'#DC4C64'} active={true} />
+                :
+                <Message msg={messageError} bgColor={'cornflowerblue'} active={true} />)
+            }
+
             <section className='section-usuarios'>
               <h1>Usuarios</h1>
               <Button text='Agregar un Usuario' icon={homepage} bgColor={'cornflowerblue'} evento={handleAddUser} />
@@ -106,13 +115,8 @@ export const UsuariosPage = () => {
                       'rol:select:Administrador:Operador',
                     ]}
                     to="usuarios"
-                  // inputs={[
-                  //   'Nombre:text',
-                  //   'Telefono:text',
-                  //   'Correo:text',
-                  //   'Rol:select:Administrador:Operador',
-                  // ]}
-                  // handleSubmit={handleSubmit}
+                    setError={setWarn}
+                    setMessageError={setMessageError}
                   />
                 </>
 

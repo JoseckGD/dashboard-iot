@@ -134,11 +134,18 @@ module.exports = {
     }
 
     _model.methods.insertUser(data)
-      .then(rows => {
-        res.send({
-          success: true,
-          message: 'El usuario ha sido registrado exitosamente'
-        })
+      .then(result => {
+        if (typeof result == 'object') {
+          res.send({
+            success: true,
+            message: 'El usuario ha sido registrado exitosamente'
+          })
+        } else {
+          res.send({
+            success: false,
+            message: result
+          })
+        }
       })
       .catch(err => {
         res.send({

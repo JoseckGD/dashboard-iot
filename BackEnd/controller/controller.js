@@ -53,11 +53,19 @@ module.exports = {
     }
 
     _model.methods.insertDevice(data)
-      .then(rows => {
-        res.send({
-          success: true,
-          message: 'Se ha insertado un nuevo dispositivo'
-        });
+      .then(result => {
+        if (typeof result == 'object') {
+          res.send({
+            success: true,
+            message: 'Se ha insertado un nuevo dispositivo'
+          });
+        } else {
+          res.send({
+            success: false,
+            message: result
+          });
+        }
+
       })
       .catch(err => {
         res.send({
@@ -93,7 +101,7 @@ module.exports = {
 
   selectuserauth: (req, res) => {
     let data = {
-      nombre: req.body.user,
+      correo: req.body.correo,
       contrasena: req.body.pass,
     }
 
@@ -120,12 +128,6 @@ module.exports = {
   },
 
   insertdata: (req, res) => {
-    // let data = {
-    //   iot: req.body.iot,
-    //   dato: req.body.dato,
-    //   fecha: req.body.fecha,
-    //   hora: req.body.hora,
-    // }
 
     _model_data.methods.insertData(req.body)
       .then(rows => {
@@ -170,6 +172,8 @@ module.exports = {
       iot: req.body.iot,
       fecha: req.body.fecha
     }
+
+    console.log("dwdwdwdwdwd", data.fecha)
 
     console.log(data)
     _model_data.methods.selectDataWithDate(data)

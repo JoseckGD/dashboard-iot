@@ -28,6 +28,11 @@ export const ContextProvider = ({ children }) => {
   //let url = "http://localhost:5051/selectusers";
   const [url, setUrl] = useState("")
 
+
+  const [warn, setWarn] = useState(null);
+  const [messageError, setMessageError] = useState('');
+
+
   useEffect(() => {
     if (url === "") return
 
@@ -169,17 +174,15 @@ export const ContextProvider = ({ children }) => {
 
 
 
-  // crear un Usuario
   const createUser = (data) => {
     const newUser = {
       id_usuario: data.id,
-      nombre: data.Nombre,
-      numero_telefono: data.Telefono,
-      correo: data.Correo,
-      rol: data.Rol,
-      contrasena: data.Contrasena,
+      nombre: (data.Nombre.trim()).toLowerCase(),
+      numero_telefono: (data.Telefono.trim()).toLowerCase(),
+      correo: (data.Correo.trim()).toLowerCase(),
+      rol: (data.Rol.trim()).toLowerCase(),
+      contrasena: (data.Contraseña.trim()),
     };
-    // console.log(newUser);
     fetchAJAX({
       url: 'http://localhost:5051/insertuser',
       settings: {
@@ -193,38 +196,32 @@ export const ContextProvider = ({ children }) => {
         if (res.success) {
           setUrl('http://localhost:5051/selectusers');
           getData();
-          window.alert(res.message);
+
+          setWarn(true)
+          setMessageError("Se ha agregado un nuevo usuario")
+          setTimeout(() => {
+            setWarn(false);
+          }, 30000);
+
         } else {
-          window.alert(res.message);
+          setWarn(true)
+          setMessageError(`Error: ${res.message}`)
+          setTimeout(() => {
+            setWarn(false);
+          }, 3000);
         }
 
       },
       resError: (error) => {
-        console.log(error);
+        setWarn(true)
+        setMessageError("Error: Intentelo más tarde")
+        setTimeout(() => {
+          setWarn(false);
+        }, 3000);
       }
     })
   };
 
-  // actualizar data de usuario
-  const updateData = (data) => {
-    console.log(data);
-    // let endpoint = `${url}/${data.id}`;
-
-    // let options = {
-    //    body: data,
-    //    headers: { "content-type": "application/json" }
-    // };
-    // api.put(endpoint, options).then((res) => {
-    //    //console.log(res);
-    //    if (!res.err) {
-    //       let newData = db.map(el => el.id === data.id ? data : el);
-    //       setDb(newData);
-    //    } else {
-    //       setError(res);
-    //    }
-    // });
-
-  };
 
   //Eliminar Dispositivo
   const deleteDevice = (data) => {
@@ -261,7 +258,8 @@ export const ContextProvider = ({ children }) => {
         method: "DELETE",
       },
       resSuccess: (json => {
-        console.log(json)
+        setUrl('http://localhost:5051/selectusers');
+        getData();
       }),
       resError: (err => {
         console.log("Huvo un Error al Eliminar el Usuario", err)
@@ -285,12 +283,31 @@ export const ContextProvider = ({ children }) => {
         body: JSON.stringify(data)
       },
       resSuccess: (json => {
-        console.log(json)
-        setUrl('http://localhost:5051/selectdevices');
-        getData();
+        if (json.success) {
+          setUrl('http://localhost:5051/selectdevices');
+          getData();
+
+          setWarn(true)
+          setMessageError('Nuevo Dispositivo Agregado')
+          setTimeout(() => {
+            setWarn(false);
+          }, 3000);
+
+        } else {
+          setWarn(true)
+          setMessageError(`Error: ${json.message}`)
+          setTimeout(() => {
+            setWarn(false);
+          }, 3000);
+        }
+
       }),
       resError: (err => {
-        console.log("Huvo un Error al Insertar el Registro", err)
+        setWarn(true)
+        setMessageError(`Error: Intentelo Más Tarde`)
+        setTimeout(() => {
+          setWarn(false);
+        }, 3000);
       }),
 
     };
@@ -312,13 +329,33 @@ export const ContextProvider = ({ children }) => {
         body: JSON.stringify(data)
       },
       resSuccess: (json => {
-        console.log(json)
-        //Actualizar la tabla de dispositivos en tiempo real
-        setUrl('http://localhost:5051/selectdevices');
-        getData();
+
+        if (json.success) {
+          //Actualizar la tabla de dispositivos en tiempo real
+          setUrl('http://localhost:5051/selectdevices');
+          getData();
+
+          setWarn(true)
+          setMessageError("Se ha actualizado el registro")
+          setTimeout(() => {
+            setWarn(false);
+          }, 3000);
+
+        } else {
+          setWarn(true)
+          setMessageError("Error: al actualizar el registro")
+          setTimeout(() => {
+            setWarn(false);
+          }, 3000);
+        }
+
       }),
       resError: (err => {
-        console.log("Huvo un Error al Actualizar el registro", err)
+        setWarn(true)
+        setMessageError("Error: al actualizar el registro")
+        setTimeout(() => {
+          setWarn(false);
+        }, 3000);
       }),
 
     };
@@ -339,13 +376,25 @@ export const ContextProvider = ({ children }) => {
         body: JSON.stringify(data)
       },
       resSuccess: (json => {
-        console.log(json)
-        //Actualizar la tabla de dispositivos en tiempo real
-        setUrl('http://localhost:5051/selectusers');
-        getData();
+        if (json.success) {
+
+          setUrl('http://localhost:5051/selectusers');
+          getData();
+
+          setWarn(true)
+          setMessageError("Usuario Actualizado")
+          setTimeout(() => {
+            setWarn(false);
+          }, 3000);
+        }
+
       }),
       resError: (err => {
-        console.log("Huvo un Error al Actualizar el registro", err)
+        setWarn(true)
+        setMessageError("Error al actualizar el registro")
+        setTimeout(() => {
+          setWarn(false);
+        }, 3000);
       }),
 
     };
@@ -408,7 +457,6 @@ export const ContextProvider = ({ children }) => {
     error,
     loading,
     Eliminar,
-    updateData,
     deleteData,
     setDataToEdit,
     dataToEdit,
@@ -418,7 +466,11 @@ export const ContextProvider = ({ children }) => {
     deleteDevice,
     updateDevice,
     updateUser,
-    insertDataIot
+    insertDataIot,
+    warn,
+    messageError,
+    setWarn,
+    setMessageError
   };
 
   return (

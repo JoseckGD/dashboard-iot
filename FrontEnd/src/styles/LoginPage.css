@@ -1,162 +1,164 @@
 .Login {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: 'Poppins', sans-serif;
-   height: 100vh;
-   min-height: 31.125em;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  min-height: 31.125em;
 }
 
 .Login .seccion {
-   height: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
 .Login .seccion .card .imagen {
-   height: 8.75em;
-   width: 8.75em;
-   border-radius: 50%;
-   padding: 3px;
-   background: rgba(125, 155, 245, 0.69);
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  height: 8.75em;
+  width: 8.75em;
+  border-radius: 50%;
+  padding: 3px;
+  background: rgba(125, 155, 245, 0.69);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Login .seccion .card .imagen img {
-   height: 8.75em;
-   width: 8.75em;
-   height: 100% auto;
-   width: 100% auto;
-   object-fit: cover;
-   border-radius: 50%;
-   border: 3px solid transparent;
+  height: 8.75em;
+  width: 8.75em;
+  height: 100% auto;
+  width: 100% auto;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid transparent;
 }
 
 .Login .card {
-   border-radius: 1.25em;
-   background: var(--main-gradient);
-   align-items: center;
-   position: relative;
-   width: 25em;
-   height: 31.5em;
+  border-radius: 1.25em;
+  background: var(--main-gradient);
+  align-items: center;
+  position: relative;
+  width: 25em;
+  height: 31.5em;
 }
 
 .Login .card .card-content {
-   border-radius: 1.25em;
-   width: 100% auto;
-   height: 100% auto;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding: 2em;
-   z-index: 100;
-   border: none;
+  border-radius: 1.25em;
+  width: 100% auto;
+  height: 100% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  z-index: 100;
+  border: none;
 }
 
 .Login .glass {
-   background: var(--main-gradient);
-   box-shadow: 0 8px 32px 0 rgb(0, 0, 0, 0.3);
-   backdrop-filter: blur(20px);
-   -webkit-backdrop-filter: blur(20px);
-   border-radius: 20px;
-   border: 2px solid rgba(255, 255, 255, 0.18);
+  background: var(--main-gradient);
+  box-shadow: 0 8px 32px 0 rgb(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 /*    Mensaje de Error     */
 .Login .warn-auth {
-   position: relative;
-   display: none;
-   text-align: end;
-   margin-top: 0.3em;
+  position: relative;
+  display: none;
+  text-align: end;
+  margin-top: -1.3em;
+  text-align: right;
+  width: 100%;
 }
 
 .Login .warn-auth.is-active {
-   display: block;
-   color: red;
-   font-weight: 400;
-   font-size: 0.8em;
+  display: block;
+  color: red;
+  font-weight: 400;
+  font-size: 0.8em;
 }
 
 /*    TEXT ROL    */
 
 .Login .rol-Admin {
-   width: 100%;
-   height: 3em;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  width: 100%;
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Login .rol-Admin h3 {
-   text-align: center;
-   text-transform: uppercase;
-   font-weight: 500;
-   letter-spacing: 0.1em;
-   text-transform: uppercase;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 /*    F O R M    */
 
 .Login .login-form {
-   width: 14em;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   flex-direction: column;
-   padding: 1em 1em 0 1em;
+  width: 14em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1em 1em 0 1em;
 }
 
 .Login .login-form .input-form {
-   width: 100%;
-   padding: 0;
-   margin: 0;
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   padding-bottom: 1.5em;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 1.5em;
 }
 
 .Login .input-form label {
-   width: 100% auto;
-   font-size: 1em;
-   font-weight: 400;
-   padding-bottom: 0.5em;
+  width: 100% auto;
+  font-size: 1em;
+  font-weight: 400;
+  padding-bottom: 0.5em;
 }
 
 .Login .input-form input {
-   width: 100% auto;
-   height: 2.5em;
-   font-size: .9em;
-   padding-left: 1em;
-   border-radius: 0.5em;
-   border: 1px solid rgba(125, 155, 245, 0.69);
+  width: 100% auto;
+  height: 2.5em;
+  font-size: .9em;
+  padding-left: 1em;
+  border-radius: 0.5em;
+  border: 1px solid rgba(125, 155, 245, 0.69);
 }
 
 .input-form input:focus {
-   outline: none;
-   box-shadow: 0 0 1px 3px rgba(125, 155, 245);
+  outline: none;
+  box-shadow: 0 0 1px 3px rgba(125, 155, 245);
 }
 
 .Login .login-form .btn-Submit {
-   width: 100%;
-   height: 2.375em;
-   font-size: 1em;
-   font-weight: 500;
-   cursor: pointer;
-   color: aliceblue;
-   margin-top: 1em;
-   border-radius: 5em;
-   background-color: rgb(125, 155, 245);
-   border: 1px solid rgb(125, 155, 245);
-   box-shadow: 0 0 20px 1px rgba(125, 155, 245, .80);
+  width: 100%;
+  height: 2.375em;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  color: aliceblue;
+  margin-top: 1em;
+  border-radius: 5em;
+  background-color: rgb(125, 155, 245);
+  border: 1px solid rgb(125, 155, 245);
+  box-shadow: 0 0 20px 1px rgba(125, 155, 245, .80);
 }
 
 .login-form .btn-Submit:hover {
-   background-color: rgb(63, 126, 221);
-   border: 1px solid rgb(63, 126, 221);
-   box-shadow: 0 0 20px 1px rgba(63, 126, 221, .80);
+  background-color: rgb(63, 126, 221);
+  border: 1px solid rgb(63, 126, 221);
+  box-shadow: 0 0 20px 1px rgba(63, 126, 221, .80);
 }

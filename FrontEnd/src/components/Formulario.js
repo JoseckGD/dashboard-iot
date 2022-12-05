@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { useStateContext } from '../contexts/ContextProvider';
 
 
-export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormModify, to }) => {
+export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormModify, to, setError, setMessageError }) => {
 
   const [form, setForm] = useState(
     initialFormModify ?
@@ -61,16 +61,13 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
     switch (to) {
       case 'usuarios':
         if (form.id === null) {
-          // alert('create');
           if (verifyFormData()) {
             createUser(form);
             setActive(false);
           }
-          // createData(form);
-          // alert(verifyFormData());
+
         } else {
           updateUser(`http://localhost:5051/updateuser/${form.id_usuario}`, form);
-          alert(form.id_usuario + 'a' + dataToEdit.rol);
           handleReset();
           setActive(false);
         }
@@ -79,16 +76,12 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
       case 'dispositivos':
         if (form.id === null) {
 
-          alert("Create")
           if (verifyFormData()) {
-
             createData('http://localhost:5051/insertdevice', form);
           }
 
         } else {
 
-          // alert(form.id_usuario + 'a' + dataToEdit.rol);
-          alert("Modificar dispositivos")
           let id = form.id_dispositivo_iot
           updateDevice(`http://localhost:5051/updatedevice/${id}`, form);
           handleReset();
@@ -146,10 +139,6 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
                       Object.values(form)[index]
                       :
                       Object.values(form)[index + 1]
-
-                    // Object.keys(form).map((campo, index) => (
-                    //   campo === input.split(':')[0] && Object.values(form)[index]
-                    // ))
                   }
                 />
                 :

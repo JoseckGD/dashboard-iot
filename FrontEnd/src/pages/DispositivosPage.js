@@ -8,6 +8,9 @@ import { Navigate } from 'react-router-dom';
 import { Table } from '../components/Table';
 import { Formulario } from "../components/Formulario"
 
+import Message from '../components/loader message/Message';
+
+
 import { useEffect, useState } from 'react';
 
 import homepage from '../img/homepage.png';
@@ -29,9 +32,8 @@ export const DispositivosPage = () => {
   const [active, setActive] = useState(false);
   const [isAddDispositivo, setIsAddDispositivo] = useState(false);
 
-  //Auth - LogIn 
-  // const { authUser, setUrl, dbUser: data, deleteDevice, updateDevice } = useStateContext();
-  const { authUser, setUrl, dbUser: data, deleteDevice } = useStateContext();
+
+  const { authUser, setUrl, dbUser: data, deleteDevice, warn, messageError, setMessageError, setWarn } = useStateContext();
   //=======================
   useEffect(() => {
 
@@ -62,6 +64,12 @@ export const DispositivosPage = () => {
           <Sidebar />
           <section className='homepage'>
             <Header />
+            {warn &&
+              (messageError.includes('Error') ?
+                <Message msg={messageError} bgColor={'#DC4C64'} active={true} />
+                :
+                <Message msg={messageError} bgColor={'cornflowerblue'} active={true} />)
+            }
             <section className='section-dispositivos'>
               <h1>
                 Dispositivos IoT
@@ -98,6 +106,8 @@ export const DispositivosPage = () => {
                     }
                     initialForm={initialForm}
                     to="dispositivos"
+                    setError={setWarn}
+                    setMessageError={setMessageError}
                   />
                 </>
 

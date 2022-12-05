@@ -32,13 +32,30 @@ module.exports = {
       });
     },
 
-    insertUser: function (data) {
-      return new Promise((resolve, reject) => {
-        // con.query(`INSERT INTO usuario (id_usuario, nombre, numero_telefono, contrasena, correo, rol) VALUES (${parseInt(data.id_usuario)}, '${data.nombre}', '${data.numero_telefono}', '${data.contrasena}', '${data.correo}', '${data.rol}')`, (err, rows) => {
-        con.query(`INSERT INTO usuario (nombre, numero_telefono, contrasena, correo, rol) VALUES ( '${data.nombre}', '${data.numero_telefono}', '${data.contrasena}', '${data.correo}', '${data.rol}')`, (err, rows) => {
+    insertUser: async function (data) {
+
+
+      let res = await new Promise((resolve, reject) => {
+        con.query(`SELECT *FROM usuario WHERE correo ='${data.correo}'`, (err, rows) => {
           callback(err, rows, resolve, reject)
         })
       })
+
+      if (res.rows.length == 0) {
+
+        return new Promise((resolve, reject) => {
+          con.query(`INSERT INTO usuario (nombre, numero_telefono, contrasena, correo, rol) VALUES ( '${data.nombre}', '${data.numero_telefono}', '${data.contrasena}', '${data.correo}', '${data.rol}')`, (err, rows) => {
+            callback(err, rows, resolve, reject)
+          })
+        })
+
+      } else {
+        return new Promise((resolve, reject) => {
+          return resolve("El correo ya existe en la Base de Datos")
+        })
+      }
+
+
     }
   }
 }

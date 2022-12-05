@@ -25,12 +25,31 @@ module.exports = {
         });
       })
     },
-    insertDevice: function (data) {
-      return new Promise((resolve, reject) => {
-        con.query(`INSERT INTO dispositivo_iot (id_dispositivo_iot, nombre, tipo, estado, dato_medida) VALUES (default, '${data.nombre}', '${data.tipo}', ${JSON.parse(data.estado.toLowerCase())}, '${data.variable_medida}')`, (err, rows) => {
+    insertDevice: async function (data) {
+
+
+
+      let res = await new Promise((resolve, reject) => {
+        con.query(`SELECT *FROM dispositivo_iot WHERE nombre = '${data.nombre}'`, (err, rows) => {
           callback(err, rows, resolve, reject)
         })
       })
+
+
+      if (res.rows.length == 0) {
+        return new Promise((resolve, reject) => {
+          con.query(`INSERT INTO dispositivo_iot (id_dispositivo_iot, nombre, tipo, estado, dato_medida) VALUES (default, '${data.nombre}', '${data.tipo}', ${JSON.parse(data.estado.toLowerCase())}, '${data.variable_medida}')`, (err, rows) => {
+            callback(err, rows, resolve, reject)
+          })
+        })
+      } else {
+        return new Promise((resolve, reject) => {
+          return resolve("Un Dispositivo ya existe con el mismo nombre")
+        })
+      }
+
+
+
     },
     updateDevice: function (data) {
       return new Promise((resolve, reject) => {

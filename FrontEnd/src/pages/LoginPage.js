@@ -10,7 +10,7 @@ import Loader from '../components/loader message/Loader';
 
 
 const initialForm = {
-  user: "",
+  correo: "",
   pass: "",
 };
 
@@ -30,14 +30,14 @@ export const LoginPage = ({ rol }) => {
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.id]: e.target.value,
+      [e.target.id]: (e.target.value.trim()).toLowerCase(),
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!form.user || !form.pass) {
+    if (!form.correo || !form.pass) {
       setError(true);
       setMessageError('Datos incompletos');
       setTimeout(() => {
@@ -56,9 +56,6 @@ export const LoginPage = ({ rol }) => {
           body: JSON.stringify(form)
         },
         resSuccess: (res) => {
-          console.log('prueba ', res);
-          setLoading(true);
-
           if (res.success) {
             setRolConcurrentUser(rol);
             handleAuth(true);
@@ -68,18 +65,15 @@ export const LoginPage = ({ rol }) => {
             setLoading(false);
             pages('/');
           } else {
+            setMessageError(res.message);
             handleAuth(false);
             setError(true);
-            setMessageError(res.message);
-            window.alert(res.message)
           }
 
         },
         resError: (error) => {
-          console.log('a');
           setError(true);
           setMessageError(error);
-          // console.log('a', error);
           setTimeout(() => {
             setError(false);
           }, 10000);
@@ -117,10 +111,10 @@ export const LoginPage = ({ rol }) => {
 
                   <form onSubmit={handleSubmit} id="login-form" className='login-form'>
                     <div className="input-form in-Text">
-                      <label htmlFor="user" className="form-label">Usuario</label>
+                      <label htmlFor="correo" className="form-label">Correo</label>
                       <input onChange={handleChange} type="text" className="form-control"
-                        id="user" name="user" aria-describedby="emailHelp"
-                        placeholder='Ingrese su usuario' value={form.user} />
+                        id="correo" name="correo" aria-describedby="emailHelp"
+                        placeholder='Ingrese su usuario' value={form.correo} />
                     </div>
                     <div className="input-form in-pass">
                       <label htmlFor="pass" className="form-label">Contraseña</label>
@@ -130,7 +124,6 @@ export const LoginPage = ({ rol }) => {
                         name="password"
                       />
                     </div>
-                    <p className="warn-auth">Error</p>
                     <button type="submit" className="btn-Submit">Entrar</button>
                   </form>
 

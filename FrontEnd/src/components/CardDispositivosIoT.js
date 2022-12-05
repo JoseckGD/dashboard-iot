@@ -1,22 +1,51 @@
-import { Button } from './Button';
-import { CSVLink } from "react-csv";
-
-let arrayData = []
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const prettyLink = {
   backgroundColor: 'cornflowerblue',
-  fontSize: 14,
-  fontWeight: 500,
+  fontSize: 12,
   lineHeight: 2,
-  padding: '0 40px',
+  padding: '5px 40px',
+  border: 0,
   borderRadius: 100,
-  color: 'black'
+  color: 'black',
+  fontWeight: 'bold'
 };
 
-export default function CardDispositivosIoT({ nombrIoT, handleChange, value, dataIoTDB }) {
+export default function CardDispositivosIoT({ nombrIoT, handleChange, value, dataIoTDB, setDataBusqueda, setDataIoTDB }) {
 
-  arrayData.push(data)
 
+  const createPDF = (e) => {
+
+    setDataBusqueda({ iot: '', fecha: '' })
+    setDataIoTDB(null)
+
+    const doc = new jsPDF();
+
+    let img = new Image()
+    img.src = './Logo.png'
+    doc.addImage(img, 'png', 14, 10, 20, 15)
+
+    doc.text(`Dashboard IoT`, 38, 20);
+
+    const tableColumn = ["Dispositivo", "Hora", "Dato", "Fecha"];
+    const tableRows = [];
+
+    dataIoTDB.forEach(data => {
+      const DataIoT = [
+        data.dispositivo_iot,
+        data.hora,
+        data.dato,
+        data.fecha,
+      ];
+      tableRows.push(DataIoT);
+    });
+
+
+    doc.autoTable(tableColumn, tableRows, { startY: 45 });
+    doc.text(`Reporte de Datos del Dispositivo "${nombrIoT}"`, 14, 40);
+    doc.save(`reporte_${nombrIoT}.pdf`);
+  }
   return (
 
     <div>
@@ -24,11 +53,9 @@ export default function CardDispositivosIoT({ nombrIoT, handleChange, value, dat
       <input type="date" name='fecha' id={`fecha-${nombrIoT}`} value={value.fecha} onChange={(e) => handleChange(e)} />
 
       {dataIoTDB &&
-        <CSVLink data={dataIoTDB} style={prettyLink}>
-          Generar Reporte
-        </CSVLink>
+        dataIoTDB.length > 0 &&
+        <button onClick={(e) => createPDF(e)} style={prettyLink}>Generar Reporte</button>
       }
-
     </div>
   )
 }

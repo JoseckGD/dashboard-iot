@@ -18,12 +18,13 @@ module.exports = {
       })
     },
     insertData: function (data) {
+
       return new Promise((resolve, reject) => {
-        // console.log('=======================0\n Modelo: ', data, '\n==============================');}
         con.query(`INSERT INTO datos (dispositivo_iot, fecha, hora, dato) VALUES ('${data.iot}','${data.fecha}', '${data.hora}', '${data.dato}')`, (err, rows) => {
           callback(err, rows, resolve, reject)
         })
       })
+
     },
     selectDataWithDate: function (data) {
       return new Promise((resolve, reject) => {

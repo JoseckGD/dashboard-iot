@@ -10,6 +10,7 @@ Router.get('/selectdevices', selectdevices);
 Router.delete('/deletedevice/:id', deletedevice);
 Router.post('/insertdevice', insetdevice);
 Router.put('/updatedevice/:id', updatedevice);
+
 Router.post('/selectuserauth', selectuserauth);
 
 //RUTAS PARA OBTENRE E INSERTAR DATOS DE DISPOSITVOS IOT

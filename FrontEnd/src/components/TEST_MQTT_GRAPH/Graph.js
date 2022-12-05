@@ -5,7 +5,7 @@ import { CustomTooltip } from './CustomTooltip'
 
 const mqtt = require('mqtt/dist/mqtt')
 // const client = mqtt.connect('ws://192.168.30.84:8082/mqtt', { clientId: `Fronted/Iot ${Math.random()}`, clean: false })
-const client = mqtt.connect('ws://192.168.0.95:8082/mqtt', { clientId: `Fronted/Iot ${Math.random()}`, clean: false })
+const client = mqtt.connect('ws://192.168.87.92:8082/mqtt', { clientId: `Fronted/Iot ${Math.random()}`, clean: false })
 
 export const Graph = ({ device }) => {
 
@@ -30,7 +30,7 @@ export const Graph = ({ device }) => {
     client.on('message', (topic, message) => {
       if (topic === `device/${device}`) {
         // console.log("Datos del ESP8266", message.toString())
-        let date = `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`
+        let date = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
         let hour = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
 
         setValue([...value, { name: date, uv: (message.toString()).split('#')[1], pv: 2400, amt: 10, hour: hour }])

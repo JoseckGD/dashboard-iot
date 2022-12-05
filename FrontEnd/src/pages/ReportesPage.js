@@ -8,6 +8,7 @@ import CardDispositivosIoT from '../components/CardDispositivosIoT';
 import { useEffect, useState } from 'react';
 import fetchAJAX from '../helpers/fetch';
 
+
 export const ReportesPage = () => {
   useTitle('Dashboard IoT | Reportes');
 
@@ -38,7 +39,9 @@ export const ReportesPage = () => {
 
   }, [])
 
+
   const handleChange = (e) => {
+
     setDataBusqueda({
       ...dataBusqueda,
       'iot': e.target.id.split('fecha-')[1],
@@ -57,14 +60,12 @@ export const ReportesPage = () => {
       url: 'http://localhost:5051/selectdevicewithdate',
       settings,
       resSuccess: (res) => {
-
         if (res.success === true) {
           setDataIoTDB(res.result.rows)
         }
       },
       resError: (err) => {
         console.log("Error al Obtener los Datos del Dispositivo IoT", err)
-
       }
     })
 
@@ -81,7 +82,6 @@ export const ReportesPage = () => {
             <h1>
               Reportes
             </h1>
-
             {dataIoT &&
               <div className="container-devices">
                 {dataIoT.result.map(el => {
@@ -92,6 +92,8 @@ export const ReportesPage = () => {
                       handleChange={handleChange}
                       value={dataBusqueda}
                       dataIoTDB={dataIoTDB}
+                      setDataIoTDB={setDataIoTDB}
+                      setDataBusqueda={setDataBusqueda}
                     />)
                 })}
               </div>
