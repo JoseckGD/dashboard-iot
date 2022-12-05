@@ -13,7 +13,7 @@ import Message from '../components/loader message/Message';
 
 import { useEffect, useState } from 'react';
 
-import homepage from '../img/homepage.png';
+import homepage from '../img/boton-mas.png';
 import { Button } from '../components/Button';
 
 
@@ -37,8 +37,8 @@ export const DispositivosPage = () => {
   //=======================
   useEffect(() => {
 
-    // setUrl("https://dashboard--test.herokuapp.com/selectdevices");
-    setUrl("http://localhost:5051/selectdevices");
+    setUrl(`http://localhost:5051/selectdevices`);
+    //setUrl(`${urlBase}/selectdevices`);
   })
 
   const handleAddUser = () => {

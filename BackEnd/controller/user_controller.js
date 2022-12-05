@@ -130,7 +130,7 @@ module.exports = {
       numero_telefono: req.body.numero_telefono,
       contrasena: req.body.contrasena,
       correo: req.body.correo,
-      rol: req.body.rol
+      rol: (req.body.rol).toLowerCase()
     }
 
     _model.methods.insertUser(data)

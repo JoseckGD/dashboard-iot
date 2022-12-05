@@ -11,7 +11,10 @@ module.exports = {
     selectUser: async function (data) {
 
       let user = await new Promise((resolve, reject) => {
-        con.query(`SELECT *FROM usuario WHERE correo = '${data.correo}' and contrasena = '${data.contrasena}'`, (err, rows) => {
+        con.query(`
+        SELECT *FROM usuario WHERE correo = '${data.correo}' and contrasena = '${data.contrasena}'
+        and rol = '${data.rol}'
+        `, (err, rows) => {
           callback(err, rows, resolve, reject)
         })
       })

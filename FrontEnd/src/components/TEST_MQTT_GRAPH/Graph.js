@@ -13,7 +13,7 @@ export const Graph = ({ device }) => {
   // const [dataToSend, setDataToSend] = useState([]);
   const [deviceIsConnected, setDeviceIsConnected] = useState(false);
 
-  const { insertDataIot } = useStateContext();
+  const { insertDataIot, urlBase } = useStateContext();
 
   useEffect(() => {
 
@@ -36,8 +36,8 @@ export const Graph = ({ device }) => {
         setValue([...value, { name: date, uv: (message.toString()).split('#')[1], pv: 2400, amt: 10, hour: hour }])
 
 
-
-        insertDataIot('http://localhost:5051/insert_data', {
+        // insertDataIot(`http://localhost:5051/insert_data`, {
+        insertDataIot(`${urlBase}/insert_data`, {
           iot: device,
           fecha: date,
           hora: hour,

@@ -1,5 +1,6 @@
 import { Button } from './Button';
-import homepage from '../img/homepage.png';
+import btn_modificar from '../img/boton-modifcar.png';
+import btn_eliminar from '../img/boton-eliminar.png';
 import { TableD } from './TableD';
 let id = '';
 export const TableRow = ({ title, el, eventoModify, eventoDelete }) => {
@@ -28,7 +29,7 @@ export const TableRow = ({ title, el, eventoModify, eventoDelete }) => {
                eventoModify={eventoModify}
                data={el}
                id_data={id}
-               text='Modificar' icon={homepage}
+               text='Modificar' icon={btn_modificar}
                bgColor={'#00C851'}
             />
          </td>
@@ -40,7 +41,7 @@ export const TableRow = ({ title, el, eventoModify, eventoDelete }) => {
                eventoDelete={eventoDelete}
                text='Eliminar'
                id_data={id}
-               icon={homepage}
+               icon={btn_eliminar}
                bgColor={'#ff4444'}
             />
          </td>

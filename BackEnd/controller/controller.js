@@ -103,6 +103,7 @@ module.exports = {
     let data = {
       correo: req.body.correo,
       contrasena: req.body.pass,
+      rol: (req.body.rol).toLowerCase()
     }
 
     console.log(data)

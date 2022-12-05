@@ -32,6 +32,8 @@ export const ContextProvider = ({ children }) => {
   const [warn, setWarn] = useState(null);
   const [messageError, setMessageError] = useState('');
 
+  //const urlBase = 'https://dashboardiotest.herokuapp.com';
+  // const urlBase = 'http://localhost:5051/';
 
   useEffect(() => {
     if (url === "") return
@@ -108,6 +110,7 @@ export const ContextProvider = ({ children }) => {
   const handleCloseSesion = () => {
     fetchAJAX({
       url: `http://localhost:5051/deleteusuerauth`,
+      // url: `${urlBase}/deleteusuerauth`,
       resSuccess: (res) => {
         console.log(res);
 
@@ -185,6 +188,7 @@ export const ContextProvider = ({ children }) => {
     };
     fetchAJAX({
       url: 'http://localhost:5051/insertuser',
+      //url: `${urlBase}/insertuser`,
       settings: {
         method: "POST",
         headers: {
@@ -195,6 +199,7 @@ export const ContextProvider = ({ children }) => {
       resSuccess: (res) => {
         if (res.success) {
           setUrl('http://localhost:5051/selectusers');
+          //setUrl(`${urlBase}/selectusers`);
           getData();
 
           setWarn(true)
@@ -227,6 +232,7 @@ export const ContextProvider = ({ children }) => {
   const deleteDevice = (data) => {
 
     let endpoint = `http://localhost:5051/deletedevice/${data.id}`;
+    // let endpoint = `${urlBase}/deletedevice/${data.id}`;
 
     let options = {
       url: endpoint,
@@ -251,6 +257,7 @@ export const ContextProvider = ({ children }) => {
   const deleteData = (data) => {
 
     let endpoint = `http://localhost:5051/deleteuser/${data.id}`;
+    // let endpoint = `${urlBase}/deleteuser/${data.id}`;
 
     let options = {
       url: endpoint,
@@ -471,6 +478,7 @@ export const ContextProvider = ({ children }) => {
     messageError,
     setWarn,
     setMessageError
+    //urlBase
   };
 
   return (

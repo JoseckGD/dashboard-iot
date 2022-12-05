@@ -23,7 +23,8 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
     setDataToEdit,
     createData,
     updateDevice,
-    updateUser
+    updateUser,
+    urlBase
   } = useStateContext();
 
   useEffect(() => {
@@ -36,7 +37,6 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
   }, [dataToEdit]);
 
   const handleChange = (e) => {
-    console.log(e.target.name, e.target.value)
     setForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -84,6 +84,7 @@ export const Formulario = ({ setActive, inputs, isAdd, initialForm, initialFormM
 
           let id = form.id_dispositivo_iot
           updateDevice(`http://localhost:5051/updatedevice/${id}`, form);
+          //updateDevice(`${urlBase}/updatedevice/${id}`, form);
           handleReset();
         }
 

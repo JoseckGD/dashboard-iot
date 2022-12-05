@@ -1,5 +1,8 @@
 import '../styles/LoginPage.css';
-import logoUser from '../img/user.png';
+// import logoUser from '../img/user.png';
+import Gerente from '../img/gerente.png';
+import Operador from '../img/operador.png';
+import Administrador from '../img/administrador.png'
 import { useStateContext } from '../contexts/ContextProvider';
 import { useTitle } from '../hooks/useTitle';
 import { useState } from 'react';
@@ -12,6 +15,7 @@ import Loader from '../components/loader message/Loader';
 const initialForm = {
   correo: "",
   pass: "",
+  rol: ""
 };
 
 export const LoginPage = ({ rol }) => {
@@ -22,7 +26,7 @@ export const LoginPage = ({ rol }) => {
   const [messageError, setMessageError] = useState('');
   let pages = useNavigate();
 
-  const { currentMode, handleAuth, authUser, setRolConcurrentUser } = useStateContext();
+  const { currentMode, handleAuth, authUser, setRolConcurrentUser, urlBase } = useStateContext();
   //setRolConcurrentUser(rol);
   useTitle('Dashboard IoT | Login ' + rol);
 
@@ -31,6 +35,7 @@ export const LoginPage = ({ rol }) => {
     setForm({
       ...form,
       [e.target.id]: (e.target.value.trim()).toLowerCase(),
+      rol,
     });
   };
 
@@ -47,7 +52,8 @@ export const LoginPage = ({ rol }) => {
     } else {
 
       fetchAJAX({
-        url: 'http://localhost:5051/selectuserauth',
+        url: `http://localhost:5051/selectuserauth`,
+        //url: `${urlBase}/selectuserauth`,
         settings: {
           method: "POST",
           headers: {
@@ -103,7 +109,7 @@ export const LoginPage = ({ rol }) => {
               }}>
                 <div className="card-content">
                   <div className="imagen">
-                    <img src={logoUser} alt='logoUser' />
+                    <img src={rol === 'Gerente' ? Gerente : (rol === 'Operador' ? Operador : Administrador)} alt='logoUser' />
                   </div>
                   <div className="rol-Admin">
                     <h3>{rol}</h3>
