@@ -5,7 +5,8 @@ import { CustomTooltip } from './CustomTooltip'
 
 const mqtt = require('mqtt/dist/mqtt')
 // const client = mqtt.connect('ws://192.168.30.84:8082/mqtt', { clientId: `Fronted/Iot ${Math.random()}`, clean: false })
-const client = mqtt.connect('ws://192.168.87.92:8082/mqtt', { clientId: `Fronted/Iot ${Math.random()}`, clean: false })
+// const client = mqtt.connect('ws://192.168.87.92:8082/mqtt', { clientId: `Fronted/Iot ${Math.random()}`, clean: false })
+const client = mqtt.connect('ws://192.168.0.95:8082/mqtt', { clientId: `Fronted/Iot ${Math.random()}`, clean: false })
 
 export const Graph = ({ device }) => {
 

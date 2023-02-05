@@ -74,19 +74,27 @@ export const UsuariosPage = () => {
     <>
       {authUser === false ? <Navigate to='/tipo-usuario' /> : (
         <>
-          <Sidebar />
+          {/* <Sidebar /> */}
+          <Header />
           <section className='homepage'>
-            <Header />
             {warn &&
               (messageError.includes('Error') ?
                 <Message msg={messageError} bgColor={'#DC4C64'} active={true} />
                 :
                 <Message msg={messageError} bgColor={'cornflowerblue'} active={true} />)
             }
+            <div className='titleBtn'>
+              <h1>
+                Usuarios
+              </h1>
+              <Button
+                text='Agregar un Usuario'
+                icon={homepage}
+                bgColor={'cornflowerblue'}
+                evento={handleAddUser} />
 
+            </div>
             <section className='section-usuarios'>
-              <h1>Usuarios</h1>
-              <Button text='Agregar un Usuario' icon={homepage} bgColor={'cornflowerblue'} evento={handleAddUser} />
               <Table
                 title='usuarios'
                 eventoModify={handleModify}

@@ -22,7 +22,8 @@ export const TipoUsuarioPage = () => {
     <>
       {authUser === 'true' ? <Navigate to='/' /> : (
         <>
-          <Header btn={true} />
+          <Header botones={false} />
+          <h1>Iniciar Sesion como...</h1>
           <section className="tipoUsuario">
             <nav className='opciones'>
               <NavLink to='/login_Gerente'>

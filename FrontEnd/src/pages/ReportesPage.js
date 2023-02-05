@@ -78,9 +78,9 @@ export const ReportesPage = () => {
       {authUser === false ? <Navigate to='/tipo-usuario' /> : (
 
         <>
-          <Sidebar />
+          {/* <Sidebar /> */}
+          <Header />
           <section className='homepage'>
-            <Header />
             <h1>
               Reportes
             </h1>

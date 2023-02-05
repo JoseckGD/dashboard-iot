@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   height: 100vh;
   min-height: 31.125em;
 }
@@ -13,7 +13,6 @@
   align-items: center;
   justify-content: center;
 }
-
 
 .Login .seccion .card .imagen {
   height: 8.75em;
@@ -104,7 +103,7 @@
 /*    F O R M    */
 
 .Login .login-form {
-  width: 14em;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,7 +131,7 @@
 .Login .input-form input {
   width: 100% auto;
   height: 2.5em;
-  font-size: .9em;
+  font-size: 0.9em;
   padding-left: 1em;
   border-radius: 0.5em;
   border: 1px solid rgba(125, 155, 245, 0.69);
@@ -154,11 +153,22 @@
   border-radius: 5em;
   background-color: rgb(125, 155, 245);
   border: 1px solid rgb(125, 155, 245);
-  box-shadow: 0 0 20px 1px rgba(125, 155, 245, .80);
+  box-shadow: 0 0 20px 1px rgba(125, 155, 245, 0.8);
 }
 
 .login-form .btn-Submit:hover {
   background-color: rgb(63, 126, 221);
   border: 1px solid rgb(63, 126, 221);
-  box-shadow: 0 0 20px 1px rgba(63, 126, 221, .80);
+  box-shadow: 0 0 20px 1px rgba(63, 126, 221, 0.8);
+}
+
+.Regresar {
+  color: #282c34;
+  padding: 1rem 2rem;
+  z-index: 10;
+  position: absolute;
+}
+
+.Dark .Regresar {
+  color: ghostwhite;
 }

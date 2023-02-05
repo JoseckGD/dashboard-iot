@@ -61,16 +61,16 @@ export const DispositivosPage = () => {
     <>
       {authUser === 'false' ? <Navigate to='/tipo-usuario' /> : (
         <>
-          <Sidebar />
+          {/* <Sidebar /> */}
+          <Header />
           <section className='homepage'>
-            <Header />
             {warn &&
               (messageError.includes('Error') ?
                 <Message msg={messageError} bgColor={'#DC4C64'} active={true} />
                 :
                 <Message msg={messageError} bgColor={'cornflowerblue'} active={true} />)
             }
-            <section className='section-dispositivos'>
+            <div className='titleBtn'>
               <h1>
                 Dispositivos IoT
               </h1>
@@ -80,6 +80,8 @@ export const DispositivosPage = () => {
                 bgColor={'cornflowerblue'}
                 evento={handleAddUser}
               />
+            </div>
+            <section className='section-dispositivos'>
               <Table
                 title='dispositivos'
                 eventoModify={handleModify}

@@ -4,7 +4,6 @@
   padding: 0;
 }
 
-
 .form-crud {
   position: relative;
   width: 90%;
@@ -88,10 +87,6 @@
   outline: none;
   border-radius: 0.5rem;
   font-weight: bold;
-}
-
-.section-usuarios {
-  margin-top: 2rem;
 }
 
 .section-usuarios h1 {

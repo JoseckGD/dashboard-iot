@@ -25,11 +25,11 @@ export const Navlink = ({ name, type, icon, index }) => {
          }
          onClick={type === 'exit' && (closeSesion)}
       >
-         {index !== 0 &&
+         {/* {index !== 0 &&
             <div className='icon'>
                <img src={!icon ? defaultIcon : icon} alt={name} />
             </div>
-         }
+         } */}
          <p>
             {name}
          </p>

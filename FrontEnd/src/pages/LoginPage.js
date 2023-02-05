@@ -6,10 +6,11 @@ import Administrador from '../img/administrador.png'
 import { useStateContext } from '../contexts/ContextProvider';
 import { useTitle } from '../hooks/useTitle';
 import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import fetchAJAX from '../helpers/fetch';
 import Message from '../components/loader message/Message';
 import Loader from '../components/loader message/Loader';
+import { Header } from '../components/Header';
 
 
 const initialForm = {
@@ -102,6 +103,13 @@ export const LoginPage = ({ rol }) => {
         <>
           {error && <Message msg={messageError} bgColor={'#DC4C64'} />}
           {loading && <Loader />}
+          <Header botones={false} />
+          <NavLink
+            to={'/tipo-usuario'}
+            className='Regresar'
+          >
+            <h1>&#8592;Regresar</h1>
+          </NavLink>
           <div className='Login'>
             <div className="seccion">
               <div className="card glass" style={{
@@ -120,7 +128,7 @@ export const LoginPage = ({ rol }) => {
                       <label htmlFor="correo" className="form-label">Correo</label>
                       <input onChange={handleChange} type="text" className="form-control"
                         id="correo" name="correo" aria-describedby="emailHelp"
-                        placeholder='Ingrese su usuario' value={form.correo} />
+                        placeholder='Ingrese su usuario' value={form.correo} required />
                     </div>
                     <div className="input-form in-pass">
                       <label htmlFor="pass" className="form-label">Contraseña</label>
@@ -128,6 +136,7 @@ export const LoginPage = ({ rol }) => {
                         id="pass"
                         placeholder='Ingrese su contraseña' value={form.pass}
                         name="password"
+                        required
                       />
                     </div>
                     <button type="submit" className="btn-Submit">Entrar</button>

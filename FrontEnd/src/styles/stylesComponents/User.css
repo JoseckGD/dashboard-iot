@@ -1,0 +1,79 @@
+.user {
+  background-color: #282c34;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.Light .user {
+  filter: drop-shadow(0 0 10px #00000080);
+}
+.Dark .user {
+  filter: drop-shadow(0 0 10px #ffffff80);
+}
+
+.Light .user:hover {
+  filter: drop-shadow(0 0 10px #000);
+}
+
+.Dark .user:hover {
+  filter: drop-shadow(0 0 10px #fff);
+}
+
+.user img {
+  width: 2rem;
+  height: 2rem;
+  filter: invert(1);
+}
+
+.userInfo {
+  border-radius: 1rem;
+  padding: 1rem;
+  color: ghostwhite;
+  top: 5rem;
+  position: absolute;
+  background-color: #282c34;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.userInfo::before {
+  top: -0.7rem;
+  right: 2rem;
+  position: absolute;
+  content: " ";
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-bottom: 1rem solid #282c34;
+}
+
+.userClose {
+  cursor: pointer;
+  top: 0;
+  right: 1rem;
+  position: absolute;
+  content: "X";
+}
+
+.userItem {
+  padding: 1rem;
+}
+
+.Close {
+  color: ghostwhite;
+  background-color: rgba(248, 248, 255, 0.25);
+  border-radius: 5rem;
+}
+
+.Close:hover {
+  background-color: rgba(248, 248, 255, 0.5);
+  transition: all 0.5s ease-in-out;
+}

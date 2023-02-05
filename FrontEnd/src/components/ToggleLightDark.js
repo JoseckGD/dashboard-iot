@@ -1,7 +1,9 @@
+import { NavLink } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 import '../styles/stylesComponents/ToggleLightDark.css';
+import { User } from "./User";
 
-export const ToggleLightDark = () => {
+export const ToggleLightDark = ({ botones }) => {
 
   const {
     setMode,
@@ -9,12 +11,24 @@ export const ToggleLightDark = () => {
 
   return (
     <div className="t">
-      <p>
-        Tema {currentMode}
-      </p>
-      <div className="toggle" >
-        <div className="circulo" onClick={setMode}></div>
-      </div >
+      <div className="a">
+        <p>
+          Tema {currentMode}
+        </p>
+        <div className="toggle" onClick={setMode}>
+          <div className="circulo" ></div>
+        </div >
+      </div>
+      {/* <NavLink
+        to={'/logout'}
+        className='Close'
+        onClick={() => closeSesion()}
+      >
+        {'Cerrar Sesion'}
+      </NavLink> */}
+      {botones !== false &&
+        <User />
+      }
     </div >
   )
 }

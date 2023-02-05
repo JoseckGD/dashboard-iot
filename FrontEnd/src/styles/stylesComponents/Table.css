@@ -1,12 +1,19 @@
 .tabla {
   width: calc(100% - 2em);
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: #00000025;
+  box-shadow: 0 0 20px 10px #00000050;
+  border-radius: 1rem;
   backdrop-filter: blur(20px);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1em;
-  margin-top: 1em;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.tabla:hover {
+  box-shadow: 0 0 20px 10px #00000080;
+  transition: all 0.2s ease-in-out;
 }
 
 .tabla caption {

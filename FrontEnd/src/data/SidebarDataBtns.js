@@ -42,14 +42,14 @@ export const buttonsData = [
          },
       ],
    },
-   {
-      title: 'exit',
-      btn: [
-         {
-            name: 'logout',
-            type: 'exit',
-            icon: exit,
-         },
-      ],
-   },
+   // {
+   //    title: 'exit',
+   //    btn: [
+   //       {
+   //          name: 'logout',
+   //          type: 'exit',
+   //          icon: exit,
+   //       },
+   //    ],
+   // },
 ];

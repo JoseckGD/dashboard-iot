@@ -1,5 +1,11 @@
 .section-dispositivos {
-  margin-top: 2rem;
+  margin-top: 1rem;
+}
+
+.titleBtn button {
+  position: absolute;
+  top: 6.5rem;
+  right: 3.5rem;
 }
 
 .section-dispositivos h1 {

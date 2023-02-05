@@ -26,28 +26,29 @@ export const HomePage = () => {
     <>
       {authUser === 'false' ? <Navigate to='/tipo-usuario' /> : (
         <>
-          <Sidebar />
+          {/* <Sidebar /> */}
+          <Header />
           <section className='homepage'>
-            <Header />
             <h1>
               Dashboard IoT
             </h1>
 
             {/*Prueba Grafica de Datos del ESP8266 Potenciometro*/}
-            <br />
+            {/* <br />
             <p><strong>Prototipo 1.- ESP8266 Potenciometro</strong></p>
             <br />
-            <Graph device='potenciometro' />
+            <Graph device='potenciometro' /> */}
 
-            <br />
-            <p><strong>Encender / Apagar Led</strong></p>
-            <Toggle />
 
             {/*Prueba Grafica de Datos del ESP8266 Temperatura*/}
-            <br />
-            <p><strong>Prototipo 2.- ESP8266 Temperatura</strong></p>
-            <br />
-            <Graph device='Temperatura' />
+            <div className='Sensor'>
+              <p><strong>Prototipo 1.- ESP8266 Temperatura</strong></p>
+              <Graph device='Temperatura' />
+            </div>
+            <div className='Sensor'>
+              <p><strong>Encender / Apagar Led</strong></p>
+              <Toggle />
+            </div>
 
           </section>
         </>

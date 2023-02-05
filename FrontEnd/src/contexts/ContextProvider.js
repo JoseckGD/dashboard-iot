@@ -179,7 +179,7 @@ export const ContextProvider = ({ children }) => {
 
   const createUser = (data) => {
     const newUser = {
-      id_usuario: data.id,
+      // id_usuario: data.id,
       nombre: (data.Nombre.trim()).toLowerCase(),
       numero_telefono: (data.Telefono.trim()).toLowerCase(),
       correo: (data.Correo.trim()).toLowerCase(),

@@ -1,6 +1,14 @@
 :root {
-  --main-gradient: -webkit-radial-gradient(top left, rgba(125, 155, 245, .70), rgba(255, 255, 255, 0.216));
-  --main-gradient-r: -webkit-radial-gradient(top right, rgba(125, 155, 245, .70), rgba(255, 255, 255, 0.216));
+  --main-gradient: -webkit-radial-gradient(
+    top left,
+    rgba(125, 155, 245, 0.7),
+    rgba(255, 255, 255, 0.216)
+  );
+  --main-gradient-r: -webkit-radial-gradient(
+    top right,
+    rgba(125, 155, 245, 0.7),
+    rgba(255, 255, 255, 0.216)
+  );
 
   --main-color: #282c34;
   --main-color-50: #282c3460;
@@ -15,18 +23,15 @@
 }
 
 .Light {
-  /*background: var(--main-gradient-r);*/
-
-  background: #ebebeb;
+  height: 100vh;
+  background: var(--main-gradient);
   color: #282c34;
-  min-height: inherit;
 }
 
 .Dark {
-
+  height: 100vh;
   background-color: #282c34;
   color: ghostwhite;
-  min-height: inherit;
 }
 
 a {
